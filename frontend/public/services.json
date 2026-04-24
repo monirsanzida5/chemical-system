@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Industrial Chemicals",
+    "category": "industrial",
+    "detail": "Used for factory production"
+  },
+  {
+    "name": "Lab Chemicals",
+    "category": "lab",
+    "detail": "Testing and research purpose"
+  }
+]
