@@ -22,8 +22,13 @@ const upload = multer({ storage });
 // GET ALL JOBS
 // ======================
 router.get("/", async (req, res) => {
-  const jobs = await Job.find();
-  res.json(jobs);
+  try {
+    const jobs = await Job.find();
+    res.json(jobs);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch jobs" });
+  }
 });
 
 // ======================
@@ -54,8 +59,13 @@ router.post("/apply", upload.single("resume"), async (req, res) => {
 // GET APPLICATIONS (ADMIN)
 // ======================
 router.get("/applications", async (req, res) => {
-  const apps = await Application.find();
-  res.json(apps);
+  try {
+    const apps = await Application.find();
+    res.json(apps);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch applications" });
+  }
 });
 
 module.exports = router;
