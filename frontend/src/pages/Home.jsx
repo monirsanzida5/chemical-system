@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home({ lang }) {
   const [email, setEmail] = useState("");
+  const [index, setIndex] = useState(0);
+  const nav = useNavigate();
 
   const subscribe = () => {
     if (!email) return alert("Enter email");
@@ -11,9 +13,6 @@ export default function Home({ lang }) {
     alert("Subscribed ✅");
     setEmail("");
   };
-
-  const [index, setIndex] = useState(0);
-  const nav = useNavigate();
 
   const t = {
     en: {
@@ -67,40 +66,24 @@ export default function Home({ lang }) {
   };
 
   const banners = [
-    {
-      img: "/images/1.jpg",
-      title: "🔥 Chemical System",
-      desc: "Best quality chemical products"
-    },
-    {
-      img: "/images/2.jpg",
-      title: "⚡ Fast Delivery",
-      desc: "We deliver products very fast"
-    },
-    {
-      img: "/images/3.jpg",
-      title: "💰 Big Discount",
-      desc: "Get amazing offers today"
-    }
+    { img: "/images/1.jpg", title: "🔥 Chemical System", desc: "Best quality chemical products" },
+    { img: "/images/2.jpg", title: "⚡ Fast Delivery", desc: "We deliver products very fast" },
+    { img: "/images/3.jpg", title: "💰 Big Discount", desc: "Get amazing offers today" }
   ];
 
-  // ✅ FIXED WARNING
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % banners.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [banners.length]);
+  }, []); // 👈 FIXED
 
   return (
     <div>
-
       <div className="top-banner">
         <div className="banner-box">
-
           <h2 className="typing">{t[lang].welcome}</h2>
-
           <p className="company-name">{t[lang].company}</p>
 
           <div className="marquee">
@@ -108,77 +91,17 @@ export default function Home({ lang }) {
           </div>
 
           <div className="banner-buttons">
-            <button onClick={() => nav("/products")}>
-              {t[lang].explore}
-            </button>
-
-            <button onClick={() => nav("/contact")}>
-              {t[lang].contact}
-            </button>
+            <button onClick={() => nav("/products")}>{t[lang].explore}</button>
+            <button onClick={() => nav("/contact")}>{t[lang].contact}</button>
           </div>
-
         </div>
       </div>
 
       <div className="slider">
-        <div className="slider-overlay"></div>
-
-        <img src={banners[index].img} className="slider-img" alt="banner" />
-
-        <div className="slider-content">
-          <h1>{banners[index].title}</h1>
-          <p>{banners[index].desc}</p>
-
-          <button onClick={() => nav("/products")}>
-            {t[lang].shop}
-          </button>
-        </div>
+        <img src={banners[index].img} alt="banner" />
+        <h1>{banners[index].title}</h1>
+        <p>{banners[index].desc}</p>
       </div>
-
-      <div className="feature-container">
-        <div>⚡ {t[lang].feature1}</div>
-        <div>🔐 {t[lang].feature2}</div>
-        <div>📦 {t[lang].feature3}</div>
-        <div>🌐 {t[lang].feature4}</div>
-      </div>
-
-      <footer className="home-footer">
-
-        <div className="footer-grid">
-
-          <div>
-            <h2>{t[lang].company}</h2>
-          </div>
-
-          <div>
-            <h3>Links</h3>
-            <ul>
-              <li onClick={() => nav("/")}>Home</li>
-              <li onClick={() => nav("/products")}>Products</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3>Contact</h3>
-          </div>
-
-          <div>
-            <h3>Newsletter</h3>
-
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <button onClick={subscribe}>Subscribe</button>
-
-            <p>🕒 {new Date().toLocaleTimeString()}</p>
-          </div>
-
-        </div>
-
-      </footer>
-
     </div>
   );
 }

@@ -3,32 +3,14 @@ import React, { useState } from "react";
 export default function Career() {
 
   const [jobs] = useState([
-    {
-      id: 1,
-      title: "Frontend Developer",
-      location: "Remote",
-      type: "Full Time",
-      skills: ["React", "CSS", "JS"]
-    },
-    {
-      id: 2,
-      title: "Backend Engineer",
-      location: "Dhaka",
-      type: "Full Time",
-      skills: ["Node", "MongoDB", "API"]
-    },
-    {
-      id: 3,
-      title: "AI Engineer",
-      location: "Remote",
-      type: "Contract",
-      skills: ["Python", "ML", "AI"]
-    }
+    { id: 1, title: "Frontend Developer", location: "Remote", type: "Full Time", skills: ["React", "CSS", "JS"] },
+    { id: 2, title: "Backend Engineer", location: "Dhaka", type: "Full Time", skills: ["Node", "MongoDB", "API"] },
+    { id: 3, title: "AI Engineer", location: "Remote", type: "Contract", skills: ["Python", "ML", "AI"] }
   ]);
 
   const [search, setSearch] = useState("");
 
-  // ✅ FIX ADDED
+  // ✅ FIX: resume state added
   const [resume, setResume] = useState(null);
 
   const [form, setForm] = useState({
@@ -43,6 +25,9 @@ export default function Career() {
     type: ""
   });
 
+  // ❌ FIXED: removed wrong console.log
+  // console.log(resume);
+
   const filteredJobs = jobs.filter(job =>
     job.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -52,7 +37,7 @@ export default function Career() {
   };
 
   const handleResume = (e) => {
-    setResume(e.target.files[0]);
+    setResume(e.target.files[0]); // ✅ now valid
   };
 
   const postJob = () => {
@@ -60,11 +45,9 @@ export default function Career() {
   };
 
   return (
-    <div>
+    <div className="career-page">
 
-      <div className="career-hero">
-        <h1>🚀 Build Your Career</h1>
-      </div>
+      <h1>Career Page</h1>
 
       <input
         placeholder="Search job..."

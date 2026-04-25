@@ -13,10 +13,10 @@ export default function ProductDetails({ cart, setCart }) {
     product = allProducts.find(p => p.id === parseInt(id));
   }
 
-  const [mainImg, setMainImg] = useState(product?.img || "");
+  const [mainImg] = useState(product?.img || "");
 
   if (!product) {
-    return <h2>❌ No product found</h2>;
+    return <h2>No product found</h2>;
   }
 
   const addToCart = () => {
@@ -33,7 +33,7 @@ export default function ProductDetails({ cart, setCart }) {
       setCart([...cart, { ...product, qty: 1 }]);
     }
 
-    alert("Added to cart ✅");
+    alert("Added to cart");
   };
 
   return (
@@ -43,14 +43,12 @@ export default function ProductDetails({ cart, setCart }) {
 
       <img src={mainImg || product.img} alt="product" />
 
-      <div>
-        <img src={product.img} alt="thumb1" />
-        <img src={product.img} alt="thumb2" />
-        <img src={product.img} alt="thumb3" />
-      </div>
+      <img src="..." alt="product image" />
+      <img src="..." alt="product image" />
+      <img src="..." alt="product image" />
 
       <h1>{product.name}</h1>
-      <button onClick={addToCart}>Add</button>
+      <button onClick={addToCart}>Add to Cart</button>
 
     </div>
   );
