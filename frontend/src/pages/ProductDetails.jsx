@@ -57,9 +57,9 @@ export default function ProductDetails({ cart, setCart }) {
           />
 
           <div className="thumbs">
-            <img src={product.img} onClick={() => setMainImg(product.img)} />
-            <img src="/images/green.jpg" onClick={() => setMainImg("/images/green.jpg")} />
-            <img src="/images/purple.jpg" onClick={() => setMainImg("/images/purple.jpg")} />
+            <img src="..." alt="product image" />
+            <img src="..." alt="product image" />
+            <img src="..." alt="product image" />
           </div>
 
         </div>
