@@ -8,21 +8,17 @@ export default function ProductDetails({ cart, setCart }) {
   const location = useLocation();
   const nav = useNavigate();
 
-  // 🔥 product resolve (SAFE)
   let product = location.state;
   if (!product) {
     product = allProducts.find(p => p.id === parseInt(id));
   }
 
-  // 🔥 Hooks MUST be always here (NO CONDITION)
   const [mainImg, setMainImg] = useState(product?.img || "");
 
-  // ❌ এখন safe check (HOOK এর পরে)
   if (!product) {
-    return <h2 style={{ textAlign: "center" }}>❌ No product found</h2>;
+    return <h2>❌ No product found</h2>;
   }
 
-  // 🛒 ADD TO CART
   const addToCart = () => {
     const exists = cart.find(item => item.id === product.id);
 
@@ -41,43 +37,21 @@ export default function ProductDetails({ cart, setCart }) {
   };
 
   return (
-    <div className="details-page">
+    <div>
 
-      <button onClick={() => nav(-1)}>⬅ Back</button>
+      <button onClick={() => nav(-1)}>Back</button>
 
-      <div className="details-container">
+      <img src={mainImg || product.img} alt="product" />
 
-        {/* IMAGE */}
-        <div className="details-images">
-
-          <img
-            src={mainImg || product.img}
-            alt="product"
-            className="main-img"
-          />
-
-          <div className="thumbs">
-            <img src="..." alt="product image" />
-            <img src="..." alt="product image" />
-            <img src="..." alt="product image" />
-          </div>
-
-        </div>
-
-        {/* INFO */}
-        <div className="details-info">
-
-          <h1>{product.name}</h1>
-          <p>💰 Price: ${product.price}</p>
-          <p>📦 Category: {product.category}</p>
-
-          <button onClick={addToCart}>
-            🛒 Add to Cart
-          </button>
-
-        </div>
-
+      <div>
+        <img src={product.img} alt="thumb1" />
+        <img src={product.img} alt="thumb2" />
+        <img src={product.img} alt="thumb3" />
       </div>
+
+      <h1>{product.name}</h1>
+      <button onClick={addToCart}>Add</button>
+
     </div>
   );
 }
