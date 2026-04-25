@@ -33,7 +33,7 @@ export default function Career() {
   // STATE
   // ======================
   const [search, setSearch] = useState("");
-  const [resume, setResume] = useState(null);
+  //const [resume, setResume] = useState(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
