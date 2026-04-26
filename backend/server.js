@@ -12,6 +12,13 @@ app.use(cors());
 app.use(express.json());
 
 // =======================
+// 🧪 ROOT ROUTE (FIX FOR RENDER / VERCEL TEST ERROR)
+// =======================
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
+// =======================
 // ✅ DB CONNECT
 // =======================
 connectDB();
@@ -36,7 +43,7 @@ const jobRoutes = require("./routes/jobRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 
 // =======================
-// 🔥 ROUTES USE (ONLY ONCE)
+// 🔥 ROUTES USE
 // =======================
 app.use("/api/jobs", jobRoutes);
 app.use("/api/upload", uploadRoutes);
@@ -93,7 +100,7 @@ app.post("/login", async (req, res) => {
 
     const token = jwt.sign(
       { id: user._id },
-      "SECRET123",
+      process.env.JWT_SECRET || "SECRET123",
       { expiresIn: "7d" }
     );
 
@@ -206,8 +213,10 @@ app.delete("/delete-service/:id", (req, res) => {
 });
 
 // =======================
-// 🚀 SERVER START
+// 🚀 SERVER START (RENDER FRIENDLY)
 // =======================
-app.listen(5000, () => {
-  console.log("🚀 Server running on http://localhost:5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log("🚀 Server running on port " + PORT);
 });
