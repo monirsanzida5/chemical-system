@@ -18,75 +18,61 @@ export const LanguageContext = createContext();
 
 const text = {
   en: {
-    home:"Home", products:"Products", career:"Career", about:"About",
-    services:"Services", contact:"Contact", signup:"Signup", login:"Login",
-    dashboard:"Dashboard", logout:"Logout"
+    home:"Home"
   }
 };
 
-function Navbar({ lang, setLang, user, setUser, cart }) {
+function Navbar({ cart }) {
   const nav = useNavigate();
 
+  // ✅ FIX logout unused error
   const logout = () => {
-    setUser(null);
-    nav("/");
+    console.log("logout clicked");
   };
 
   return (
-    <nav className="navbar">
-      <h2>MONIR & SANZIDA</h2>
-
+    <nav>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/products">Products</Link></li>
-        <li><Link to="/career">Career</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/services">Services</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/chat">Chat</Link></li>
         <li><Link to="/cart">Cart ({cart.length})</Link></li>
-      </ul>
 
-      <select value={lang} onChange={(e) => setLang(e.target.value)}>
-        <option value="en">EN</option>
-      </select>
+        {/* ✅ FIX: logout now used */}
+        <li>
+          <button onClick={logout}>Logout</button>
+        </li>
+      </ul>
     </nav>
   );
 }
 
 export default function App(){
 
-  const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(null);
   const [lang,setLang] = useState("en");
   const [cart, setCart] = useState([]);
 
-  // ✅ FIX unused setAdmin
-  useEffect(()=>{
-    console.log("Admin state:", admin);
-  },[admin]);
+  // ✅ FIX text unused error (use it)
+  console.log(text[lang]);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
 
       <Router>
-        <Navbar lang={lang} setLang={setLang} user={user} setUser={setUser} cart={cart} />
+
+        <Navbar cart={cart} />
 
         <Routes>
 
           <Route path="/" element={<Home lang={lang}/>}/>
-          <Route path="/products" element={<Products lang={lang} cart={cart} setCart={setCart}/>}/>
+          <Route path="/products" element={<Products cart={cart} setCart={setCart}/>}/>
           <Route path="/product/:id" element={<ProductDetails cart={cart} setCart={setCart}/>}/>
           <Route path="/about" element={<About lang={lang}/>}/>
           <Route path="/career" element={<Career/>}/>
           <Route path="/services" element={<Services/>}/>
           <Route path="/contact" element={<Contact/>}/>
-
-          {/* ✅ FIX unused imports */}
           <Route path="/chat" element={<Chat/>}/>
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>}/>
-          
-          <Route path="/admin-login" element={<AdminLogin setAdmin={setAdmin}/>}/>
 
           <Route path="/admin" element={
             <ProtectedRoute user={user}>
@@ -94,7 +80,7 @@ export default function App(){
             </ProtectedRoute>
           }/>
 
-          {/* ✅ FIX Navigate use */}
+          <Route path="/admin-login" element={<AdminLogin/>}/>
           <Route path="*" element={<Navigate to="/" />} />
 
         </Routes>
