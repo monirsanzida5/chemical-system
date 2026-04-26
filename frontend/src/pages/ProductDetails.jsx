@@ -1,54 +1,21 @@
 import React, { useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { allProducts } from "./Products";
+import { useParams } from "react-router-dom";
 
-export default function ProductDetails({ cart, setCart }) {
+export default function ProductDetails() {
 
   const { id } = useParams();
-  const location = useLocation();
-  const nav = useNavigate();
 
-  let product = location.state;
-  if (!product) {
-    product = allProducts.find(p => p.id === parseInt(id));
-  }
-
-  const [mainImg] = useState(product?.img || "");
-
-  if (!product) {
-    return <h2>No product found</h2>;
-  }
-
-  const addToCart = () => {
-    const exists = cart.find(item => item.id === product.id);
-
-    if (exists) {
-      const updated = cart.map(item =>
-        item.id === product.id
-          ? { ...item, qty: (item.qty || 1) + 1 }
-          : item
-      );
-      setCart(updated);
-    } else {
-      setCart([...cart, { ...product, qty: 1 }]);
-    }
-
-    alert("Added to cart");
-  };
+  const [img] = useState("/images/1.jpg");
 
   return (
     <div>
 
-      <button onClick={() => nav(-1)}>Back</button>
+      <h1>Product ID: {id}</h1>
 
-      <img src={mainImg || product.img} alt="product" />
+      <img src={img} alt="" /> {/* ✅ FIX */}
 
-      <img src="..." alt="product image" />
-      <img src="..." alt="product image" />
-      <img src="..." alt="product image" />
-
-      <h1>{product.name}</h1>
-      <button onClick={addToCart}>Add to Cart</button>
+      <img src={img} alt="" />
+      <img src={img} alt="" />
 
     </div>
   );
