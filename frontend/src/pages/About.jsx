@@ -7,49 +7,41 @@ export default function About({ lang = "en" }) {
     en: {
       title: "About Us",
       desc: "We are a modern global chemical company delivering innovation and quality worldwide.",
-      mission: "Our Mission",
-      missionText: "Deliver safe, innovative chemical solutions globally.",
-      vision: "Our Vision",
-      visionText: "Become a world-leading chemical industry brand.",
-      team: "Our Team",
-      history: "Our Journey",
-      stats: "Our Achievements",
-      intro: "Company Introduction",
-      company: "Monir & Sanzida Chemicals Works"
+      team: "Our Team"
     }
   };
 
   const t = text[lang];
 
   return (
-    <div className="about-premium">
+    <div className="about">
 
-      <h1>{t.title}</h1>
-      <p>{t.desc}</p>
+      <motion.h1 initial={{opacity:0}} animate={{opacity:1}}>
+        {t.title}
+      </motion.h1>
 
-      {/* TEAM */}
-      <div className="team-premium">
+      <motion.p initial={{y:20}} animate={{y:0}}>
+        {t.desc}
+      </motion.p>
 
-        <h2>{t.team}</h2>
+      <h2>{t.team}</h2>
 
-        <div className="team-grid-premium">
+      <div className="team">
 
-          <div className="team-card">
-            <img src="https://via.placeholder.com/150" alt="CEO" />
-            <h3>CEO</h3>
-          </div>
+        <motion.div whileHover={{scale:1.1}}>
+          <img src="https://via.placeholder.com/150" alt="CEO" />
+          <h3>CEO</h3>
+        </motion.div>
 
-          <div className="team-card">
-            <img src="https://via.placeholder.com/150" alt="Engineer" />
-            <h3>Engineer</h3>
-          </div>
+        <motion.div whileHover={{scale:1.1}}>
+          <img src="https://via.placeholder.com/150" alt="Engineer" />
+          <h3>Engineer</h3>
+        </motion.div>
 
-          <div className="team-card">
-            <img src="https://via.placeholder.com/150" alt="Marketing" />
-            <h3>Marketing</h3>
-          </div>
-
-        </div>
+        <motion.div whileHover={{scale:1.1}}>
+          <img src="https://via.placeholder.com/150" alt="Marketing" />
+          <h3>Marketing</h3>
+        </motion.div>
 
       </div>
 
