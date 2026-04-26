@@ -17,12 +17,6 @@ import ProductDetails from "./pages/ProductDetails";
 
 export const LanguageContext = createContext();
 
-// 🌐 TEXT (FIX: use it so eslint won't complain)
-const text = {
-  en: { home: "Home" },
-  bn: { home: "হোম" }
-};
-
 // 🧭 NAVBAR
 function Navbar({ cart }) {
   return (
@@ -39,14 +33,8 @@ function Navbar({ cart }) {
 // 🚀 APP
 export default function App() {
 
-  // ❌ setUser fix → prefix underscore so ESLint ignores unused var
-  const [user, _setUser] = useState(null);
-
   const [lang, setLang] = useState("en");
   const [cart, setCart] = useState([]);
-
-  // ✅ FIX: use text so it's not unused
-  console.log(text[lang]);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
@@ -68,7 +56,7 @@ export default function App() {
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
           <Route path="/admin" element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute>
               <Admin />
             </ProtectedRoute>
           } />
