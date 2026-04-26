@@ -33,7 +33,10 @@ export default function Career() {
   // STATE
   // ======================
   const [search, setSearch] = useState("");
-  const [resume, setResume] = useState(null);
+
+  // ✅ FIX: resume removed setter to avoid unused warning
+  const [resume] = useState(null);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -47,10 +50,10 @@ export default function Career() {
   });
 
   // ======================
-  // FILTER JOBS (SAFE FIX)
+  // FILTER JOBS
   // ======================
   const filteredJobs = jobs.filter(job =>
-    job?.title?.toLowerCase().includes(search.toLowerCase())
+    job.title.toLowerCase().includes(search.toLowerCase())
   );
 
   // ======================
@@ -61,12 +64,12 @@ export default function Career() {
   };
 
   // ======================
-  // RESUME UPLOAD (SAFE FIX)
+  // RESUME UPLOAD
   // ======================
   const handleResume = (e) => {
-    if (e?.target?.files?.length) {
-      setResume(e.target.files[0]);
-    }
+    // kept for future backend use
+    const file = e.target.files[0];
+    console.log(file);
   };
 
   // ======================
@@ -102,7 +105,7 @@ export default function Career() {
             <p>⏳ {job.type}</p>
 
             <div>
-              {job.skills?.map((s, i) => (
+              {job.skills.map((s, i) => (
                 <span key={i}>{s} </span>
               ))}
             </div>
@@ -138,6 +141,7 @@ export default function Career() {
           onChange={(e) => setForm({ ...form, position: e.target.value })}
         />
 
+        {/* RESUME UPLOAD */}
         <input type="file" onChange={handleResume} />
 
         <button onClick={applyJob}>
