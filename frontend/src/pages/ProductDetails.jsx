@@ -16,17 +16,15 @@ export default function ProductDetails({ cart, setCart }) {
   const [mainImg] = useState(product?.img || "");
 
   if (!product) {
-    return <h2>No product found</h2>;
+    return <h2>Not Found</h2>;
   }
 
   const addToCart = () => {
-    const exists = cart.find(item => item.id === product.id);
+    const exists = cart.find(i => i.id === product.id);
 
     if (exists) {
-      const updated = cart.map(item =>
-        item.id === product.id
-          ? { ...item, qty: (item.qty || 1) + 1 }
-          : item
+      const updated = cart.map(i =>
+        i.id === product.id ? { ...i, qty: (i.qty || 1) + 1 } : i
       );
       setCart(updated);
     } else {
@@ -39,17 +37,17 @@ export default function ProductDetails({ cart, setCart }) {
   return (
     <div>
 
-      <img src={mainImg || product.img} alt="" />
+      <button onClick={() => nav(-1)}>Back</button>
+
+      <img src={mainImg || product.img} alt="product" />
 
       <div>
-        <img src="..." alt="" />
-        <img src="..." alt="" />
-        <img src="..." alt="" />
+        <img src="..." alt="thumb1" />
+        <img src="..." alt="thumb2" />
+        <img src="..." alt="thumb3" />
       </div>
 
       <h1>{product.name}</h1>
-      <p>{product.price}</p>
-
       <button onClick={addToCart}>Add</button>
 
     </div>
