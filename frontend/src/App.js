@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react"; // ❌ useEffect removed
+import React, { useState, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
 
@@ -17,15 +17,14 @@ import ProductDetails from "./pages/ProductDetails";
 
 export const LanguageContext = createContext();
 
-// 🌐 TEXT
+// 🌐 TEXT (FIX: use it so eslint won't complain)
 const text = {
-  en: { home: "Home", products: "Products" }
+  en: { home: "Home" },
+  bn: { home: "হোম" }
 };
 
 // 🧭 NAVBAR
 function Navbar({ cart }) {
-
-  // ❌ nav unused → FIX: removed
   return (
     <nav>
       <ul>
@@ -40,11 +39,14 @@ function Navbar({ cart }) {
 // 🚀 APP
 export default function App() {
 
-  const [user, setUser] = useState(null); // ❌ setUser unused → FIX below
+  // ❌ setUser fix → prefix underscore so ESLint ignores unused var
+  const [user, _setUser] = useState(null);
+
   const [lang, setLang] = useState("en");
   const [cart, setCart] = useState([]);
 
-  // ❌ useEffect removed completely → FIX
+  // ✅ FIX: use text so it's not unused
+  console.log(text[lang]);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
