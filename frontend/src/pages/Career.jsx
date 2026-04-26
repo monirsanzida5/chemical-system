@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function Career() {
 
   const [jobs] = useState([
-    { id: 1, title: "Frontend Developer", location: "Remote", type: "Full Time", skills: ["React", "CSS"] },
+    { id: 1, title: "Frontend Developer", location: "Remote", type: "Full Time", skills: ["React"] },
     { id: 2, title: "Backend Engineer", location: "Dhaka", type: "Full Time", skills: ["Node"] }
   ]);
 
@@ -37,7 +37,12 @@ export default function Career() {
   return (
     <div>
 
-      <input placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
+      <h1>Career</h1>
+
+      <input
+        placeholder="Search job"
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       {filteredJobs.map(job => (
         <div key={job.id}>

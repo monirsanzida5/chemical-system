@@ -38,9 +38,7 @@ export default function Home({ lang }) {
       feature2: "নিরাপদ লগইন",
       feature3: "পণ্য আপলোড",
       feature4: "বহুভাষা"
-    },
-    jp: {},
-    cn: {}
+    }
   };
 
   const banners = [
@@ -55,24 +53,26 @@ export default function Home({ lang }) {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [banners.length]);
+  }, []); // ✅ FIXED
 
   return (
     <div>
 
-      <div className="top-banner">
-        <h2>{t[lang]?.welcome}</h2>
-        <p>{t[lang]?.company}</p>
-      </div>
+      <h2>{t[lang]?.welcome}</h2>
+      <p>{t[lang]?.company}</p>
 
-      <div className="slider">
-        <img src={banners[index].img} alt="banner" />
-        <h1>{banners[index].title}</h1>
-        <p>{banners[index].desc}</p>
-      </div>
+      <img src={banners[index].img} alt="" />
+
+      <h1>{banners[index].title}</h1>
+      <p>{banners[index].desc}</p>
+
+      <input
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="email"
+      />
 
       <button onClick={subscribe}>Subscribe</button>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
 
     </div>
   );
