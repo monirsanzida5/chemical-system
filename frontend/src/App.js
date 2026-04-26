@@ -18,14 +18,67 @@ import ProductDetails from "./pages/ProductDetails";
 export const LanguageContext = createContext();
 
 // 🧭 NAVBAR
-function Navbar({ cart }) {
+function Navbar({ lang, setLang, user, setUser, cart }) {
+
+  const nav = useNavigate();
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+    nav("/");
+  };
+
+  const text = {
+    en: {
+      home:"Home", products:"Products", career:"Career", about:"About",
+      services:"Services", contact:"Contact", signup:"Signup", login:"Login",
+      dashboard:"Dashboard", logout:"Logout"
+    }
+  };
+
   return (
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
+    <nav className="navbar sticky-nav">
+
+      <h2 className="logo">MONIR & SANZIDA</h2>
+
+      <ul className="menu">
+
+        <li><Link to="/">{text[lang]?.home || "Home"}</Link></li>
         <li><Link to="/products">Products</Link></li>
+        <li><Link to="/career">Career</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/services">Services</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/chat">AI Chat</Link></li>
+
         <li><Link to="/cart">Cart ({cart.length})</Link></li>
+
+        {!user && <li><Link to="/signup">Signup</Link></li>}
+        {!user && <li><Link to="/login">Login</Link></li>}
+
+        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
+
+        {user?.email === "admin@gmail.com" && (
+          <li><Link to="/admin">Admin</Link></li>
+        )}
+
+        {user && (
+          <li>
+            <button onClick={logout} className="logout-btn">
+              Logout
+            </button>
+          </li>
+        )}
+
       </ul>
+
+      <select value={lang} onChange={(e)=>setLang(e.target.value)}>
+        <option value="en">EN</option>
+        <option value="bn">BN</option>
+        <option value="jp">JP</option>
+        <option value="cn">CN</option>
+      </select>
+
     </nav>
   );
 }
