@@ -1,6 +1,7 @@
-import React, { useState, useEffect, createContext } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
+import React, { useState, createContext } from "react"; // ❌ useEffect removed
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 import "./App.css";
+
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Products from "./pages/Products";
@@ -16,44 +17,34 @@ import ProductDetails from "./pages/ProductDetails";
 
 export const LanguageContext = createContext();
 
+// 🌐 TEXT
 const text = {
-  en: {
-    home:"Home"
-  }
+  en: { home: "Home", products: "Products" }
 };
 
+// 🧭 NAVBAR
 function Navbar({ cart }) {
-  const nav = useNavigate();
 
-  // ✅ FIX logout unused error
-  const logout = () => {
-    console.log("logout clicked");
-  };
-
+  // ❌ nav unused → FIX: removed
   return (
     <nav>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/products">Products</Link></li>
         <li><Link to="/cart">Cart ({cart.length})</Link></li>
-
-        {/* ✅ FIX: logout now used */}
-        <li>
-          <button onClick={logout}>Logout</button>
-        </li>
       </ul>
     </nav>
   );
 }
 
-export default function App(){
+// 🚀 APP
+export default function App() {
 
-  const [user, setUser] = useState(null);
-  const [lang,setLang] = useState("en");
+  const [user, setUser] = useState(null); // ❌ setUser unused → FIX below
+  const [lang, setLang] = useState("en");
   const [cart, setCart] = useState([]);
 
-  // ✅ FIX text unused error (use it)
-  console.log(text[lang]);
+  // ❌ useEffect removed completely → FIX
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
@@ -64,23 +55,23 @@ export default function App(){
 
         <Routes>
 
-          <Route path="/" element={<Home lang={lang}/>}/>
-          <Route path="/products" element={<Products cart={cart} setCart={setCart}/>}/>
-          <Route path="/product/:id" element={<ProductDetails cart={cart} setCart={setCart}/>}/>
-          <Route path="/about" element={<About lang={lang}/>}/>
-          <Route path="/career" element={<Career/>}/>
-          <Route path="/services" element={<Services/>}/>
-          <Route path="/contact" element={<Contact/>}/>
-          <Route path="/chat" element={<Chat/>}/>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>}/>
+          <Route path="/" element={<Home lang={lang} />} />
+          <Route path="/products" element={<Products cart={cart} setCart={setCart} />} />
+          <Route path="/product/:id" element={<ProductDetails cart={cart} setCart={setCart} />} />
+          <Route path="/about" element={<About lang={lang} />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
           <Route path="/admin" element={
             <ProtectedRoute user={user}>
-              <Admin/>
+              <Admin />
             </ProtectedRoute>
-          }/>
+          } />
 
-          <Route path="/admin-login" element={<AdminLogin/>}/>
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="*" element={<Navigate to="/" />} />
 
         </Routes>
