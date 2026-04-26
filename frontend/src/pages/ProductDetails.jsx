@@ -14,18 +14,14 @@ export default function ProductDetails({ cart, setCart }) {
     product = allProducts.find(p => p.id === parseInt(id));
   }
 
-  // ❌ SAFE FIX: avoid hook crash when product is undefined
   const safeProduct = product || { img: "", name: "", price: "", category: "" };
 
-  // 🔥 Hooks MUST always run (no condition)
   const [mainImg, setMainImg] = useState(safeProduct.img);
 
-  // ❌ AFTER HOOK SAFE CHECK
   if (!product) {
     return <h2 style={{ textAlign: "center" }}>❌ No product found</h2>;
   }
 
-  // 🛒 ADD TO CART
   const addToCart = () => {
     const exists = cart.find(item => item.id === product.id);
 
@@ -55,14 +51,26 @@ export default function ProductDetails({ cart, setCart }) {
 
           <img
             src={mainImg || product.img}
-            alt="product"
+            alt="main product image"
             className="main-img"
           />
 
           <div className="thumbs">
-            <img src={product.img} onClick={() => setMainImg(product.img)} />
-            <img src="/images/green.jpg" onClick={() => setMainImg("/images/green.jpg")} />
-            <img src="/images/purple.jpg" onClick={() => setMainImg("/images/purple.jpg")} />
+            <img
+              src={product.img}
+              alt="product thumbnail 1"
+              onClick={() => setMainImg(product.img)}
+            />
+            <img
+              src="/images/green.jpg"
+              alt="product thumbnail green"
+              onClick={() => setMainImg("/images/green.jpg")}
+            />
+            <img
+              src="/images/purple.jpg"
+              alt="product thumbnail purple"
+              onClick={() => setMainImg("/images/purple.jpg")}
+            />
           </div>
 
         </div>
