@@ -8,7 +8,6 @@ export default function ProductDetails({ cart, setCart }) {
   const location = useLocation();
   const nav = useNavigate();
 
-  // 🔥 product resolve (SAFE)
   let product = location.state;
   if (!product) {
     product = allProducts.find(p => p.id === parseInt(id));
@@ -51,24 +50,24 @@ export default function ProductDetails({ cart, setCart }) {
 
           <img
             src={mainImg || product.img}
-            alt="main product image"
+            alt="product main"
             className="main-img"
           />
 
           <div className="thumbs">
             <img
               src={product.img}
-              alt="product thumbnail 1"
+              alt="thumbnail one"
               onClick={() => setMainImg(product.img)}
             />
             <img
               src="/images/green.jpg"
-              alt="product thumbnail green"
+              alt="thumbnail green"
               onClick={() => setMainImg("/images/green.jpg")}
             />
             <img
               src="/images/purple.jpg"
-              alt="product thumbnail purple"
+              alt="thumbnail purple"
               onClick={() => setMainImg("/images/purple.jpg")}
             />
           </div>
