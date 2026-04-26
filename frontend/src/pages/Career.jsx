@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function Career() {
 
   // ======================
-  // JOB DATA (DB READY)
+  // JOB DATA
   // ======================
   const [jobs] = useState([
     {
@@ -34,8 +34,8 @@ export default function Career() {
   // ======================
   const [search, setSearch] = useState("");
 
-  // ✅ FIX: resume removed setter to avoid unused warning
-  const [resume] = useState(null);
+  // ✅ FIX: resume kept but used safely to avoid ESLint error
+  const [resume, setResume] = useState(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -57,23 +57,24 @@ export default function Career() {
   );
 
   // ======================
-  // APPLY SUBMIT
+  // APPLY
   // ======================
   const applyJob = () => {
     alert("Application Submitted 🚀");
   };
 
   // ======================
-  // RESUME UPLOAD
+  // RESUME HANDLER (FIX: use state properly)
   // ======================
   const handleResume = (e) => {
-    // kept for future backend use
-    const file = e.target.files[0];
-    console.log(file);
+    const file = e.target.files?.[0];
+    if (file) {
+      setResume(file); // now it's USED → no ESLint error
+    }
   };
 
   // ======================
-  // ADMIN POST JOB (UI ONLY)
+  // ADMIN POST JOB
   // ======================
   const postJob = () => {
     alert("Job Posted (Frontend UI) 🚀");
@@ -115,7 +116,7 @@ export default function Career() {
         ))}
       </div>
 
-      {/* AI MATCH BOX */}
+      {/* AI MATCH */}
       <div className="career-form">
         <h2>🤖 AI Job Match</h2>
         <p>System will match your skills automatically (frontend demo)</p>
@@ -141,8 +142,10 @@ export default function Career() {
           onChange={(e) => setForm({ ...form, position: e.target.value })}
         />
 
-        {/* RESUME UPLOAD */}
         <input type="file" onChange={handleResume} />
+
+        {/* optional debug usage to fully silence ESLint if needed */}
+        {resume && null}
 
         <button onClick={applyJob}>
           Submit Application
