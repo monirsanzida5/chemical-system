@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 export default function About({ lang = "en" }) {
 
@@ -13,7 +12,6 @@ export default function About({ lang = "en" }) {
       visionText: "Become a world-leading chemical industry brand.",
       team: "Our Team",
       history: "Our Journey",
-      stats: "Our Achievements",
       intro: "Company Introduction",
       company: "Monir & Sanzida Chemicals Works"
     },
@@ -27,7 +25,6 @@ export default function About({ lang = "en" }) {
       visionText: "বিশ্বমানের কেমিক্যাল কোম্পানি হিসেবে প্রতিষ্ঠিত হওয়া।",
       team: "আমাদের টিম",
       history: "আমাদের যাত্রা",
-      stats: "আমাদের অর্জন",
       intro: "কোম্পানি পরিচিতি",
       company: "মনির ও সানজিদা কেমিক্যালস ওয়ার্কস"
     },
@@ -41,7 +38,6 @@ export default function About({ lang = "en" }) {
       visionText: "世界をリードする化学企業になる。",
       team: "チーム",
       history: "歴史",
-      stats: "実績",
       intro: "会社紹介",
       company: "モニール＆サンジダ化学工業"
     },
@@ -55,154 +51,97 @@ export default function About({ lang = "en" }) {
       visionText: "成为世界领先的化工企业。",
       team: "我们的团队",
       history: "发展历程",
-      stats: "我们的成就",
       intro: "公司介绍",
       company: "Monir 和 Sanzida 化工厂"
     }
   };
 
-  // 🔥 SAFE FALLBACK (already correct, kept same)
   const t = text[lang] || text.en;
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 60 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
 
   return (
     <div className="about-premium">
 
-      {/* 🌈 HERO */}
-      <motion.div
-        className="about-hero-premium"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="hero-overlay-premium">
+      {/* HERO */}
+      <div className="about-hero-premium">
+        <h1>{t.title}</h1>
+        <h3>{t.company}</h3>
+        <p>{t.desc}</p>
+      </div>
 
-          <motion.h1
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            {t.title}
-          </motion.h1>
-
-          <motion.h3
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            {t.company}
-          </motion.h3>
-
-          <p>{t.desc}</p>
-
-        </div>
-      </motion.div>
-
-      {/* 🧊 MISSION / VISION */}
+      {/* MISSION / VISION */}
       <div className="grid-2">
 
-        <motion.div
-          className="glass-card-premium"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
+        <div className="card hover-card">
           <h2>🎯 {t.mission}</h2>
           <p>{t.missionText}</p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="glass-card-premium"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
+        <div className="card hover-card">
           <h2>🚀 {t.vision}</h2>
           <p>{t.visionText}</p>
-        </motion.div>
+        </div>
 
       </div>
 
-      {/* 📊 STATS */}
-      <motion.div
-        className="stats-premium"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        variants={fadeUp}
-      >
-        <div className="stat-card">🔥 <h2>50+</h2><p>Products</p></div>
-        <div className="stat-card">🌍 <h2>100+</h2><p>Clients</p></div>
-        <div className="stat-card">🏆 <h2>10+</h2><p>Countries</p></div>
-      </motion.div>
-
-      {/* 📜 TIMELINE */}
+      {/* JOURNEY (SIDE BY SIDE) */}
       <div className="timeline-premium">
 
         <h2>📜 {t.history}</h2>
 
-        <motion.div className="timeline-item" whileHover={{ scale: 1.05 }}>
-          <span>2018</span>
-          <p>Company Founded</p>
-        </motion.div>
+        <div className="timeline-row">
 
-        <motion.div className="timeline-item" whileHover={{ scale: 1.05 }}>
-          <span>2020</span>
-          <p>Global Expansion</p>
-        </motion.div>
+          <div className="timeline-item hover-card">
+            <span>2018</span>
+            <p>Company Founded</p>
+          </div>
 
-        <motion.div className="timeline-item" whileHover={{ scale: 1.05 }}>
-          <span>2023</span>
-          <p>100+ International Clients</p>
-        </motion.div>
+          <div className="timeline-item hover-card">
+            <span>2020</span>
+            <p>Global Expansion</p>
+          </div>
+
+          <div className="timeline-item hover-card">
+            <span>2023</span>
+            <p>100+ International Clients</p>
+          </div>
+
+        </div>
+      </div>
+
+      {/* COMPANY INTRO (3 VIDEOS) */}
+      <div className="video-premium">
+
+        <h2>🎥 {t.intro}</h2>
+
+        <div className="video-grid">
+          <iframe src="https://www.youtube.com/embed/m5MnxgU8pnM" title="v1" />
+          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" title="v2" />
+          <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" title="v3" />
+        </div>
 
       </div>
 
-      {/* 🎥 VIDEO */}
-      <motion.div
-        className="video-premium"
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-      >
-        <h2>🎥 {t.intro}</h2>
-
-        <iframe
-          src="https://www.youtube.com/embed/m5MnxgU8pnM"
-          title="company video"
-          allowFullScreen
-          loading="lazy"              // ✅ FIX (performance)
-          referrerPolicy="no-referrer-when-downgrade" // ✅ FIX
-        />
-      </motion.div>
-
-      {/* 👥 TEAM */}
+      {/* TEAM CENTERED */}
       <div className="team-premium">
 
-        <h2>👥 {t.team}</h2>
+        <h2 className="team-title">{t.team}</h2>
 
         <div className="team-grid-premium">
 
-          <motion.div whileHover={{ scale: 1.1 }} className="team-card">
+          <div className="team-card hover-card">
             <img src="https://via.placeholder.com/150" alt="" />
             <h3>CEO</h3>
-          </motion.div>
+          </div>
 
-          <motion.div whileHover={{ scale: 1.1 }} className="team-card">
+          <div className="team-card hover-card">
             <img src="https://via.placeholder.com/150" alt="" />
             <h3>Engineer</h3>
-          </motion.div>
+          </div>
 
-          <motion.div whileHover={{ scale: 1.1 }} className="team-card">
+          <div className="team-card hover-card">
             <img src="https://via.placeholder.com/150" alt="" />
             <h3>Marketing</h3>
-          </motion.div>
+          </div>
 
         </div>
 
@@ -210,4 +149,3 @@ export default function About({ lang = "en" }) {
 
     </div>
   );
-}

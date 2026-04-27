@@ -3255,75 +3255,86 @@ button {
 }
 
 
+/* ASH BACKGROUND */
 .about-premium {
-  background: linear-gradient(135deg, #0f172a, #020617);
-  color: white;
-  padding-bottom: 50px;
+  background: #e5e7eb;
+  padding: 30px;
 }
 
 /* HERO */
 .about-hero-premium {
-  height: 300px;
-  background: linear-gradient(120deg, #2563eb, #7c3aed);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  padding: 40px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white;
+  border-radius: 12px;
 }
 
-.hero-overlay-premium h1 {
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.hero-overlay-premium h3 {
-  color: #ffd700;
-}
-
-/* CARD */
-.glass-card-premium {
-  background: rgba(255,255,255,0.05);
+/* CARDS */
+.card {
+  background: white;
   padding: 20px;
-  border-radius: 15px;
-  margin: 20px;
-  backdrop-filter: blur(10px);
+  border-radius: 12px;
 }
 
 /* GRID */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-/* STATS */
-.stats-premium {
+/* HOVER EFFECT */
+.hover-card {
+  transition: 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* JOURNEY ROW */
+.timeline-row {
   display: flex;
-  justify-content: space-around;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.stat-card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* TIMELINE */
 .timeline-item {
-  background: #1e293b;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
+  background: white;
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* VIDEO GRID */
+.video-grid {
+  display: flex;
+  gap: 15px;
+}
+
+.video-grid iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
 }
 
 /* TEAM */
+.team-title {
+  text-align: center;
+}
+
 .team-grid-premium {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .team-card {
-  background: #1e293b;
+  background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
