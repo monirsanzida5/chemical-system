@@ -3465,3 +3465,34 @@ button {
     align-items: center;
   }
 }
+
+.about-hero-premium {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+  color: white;
+  border-radius: 16px;
+  margin-bottom: 30px;
+
+  /* 🔥 IMPORTANT FIX */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-hero-premium h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.about-hero-premium h3 {
+  font-size: 20px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.about-hero-premium p {
+  max-width: 700px;
+  line-height: 1.6;
+}
