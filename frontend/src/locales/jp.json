@@ -1,4 +1,27 @@
 {
+  "home": "ホーム",
+  "products": "製品",
+  "career": "キャリア",
+  "about": "私たちについて",
+  "services": "サービス",
+  "contact": "連絡先",
+  "signup": "サインアップ",
+  "login": "ログイン",
+  "dashboard": "ダッシュボード",
+  "logout": "ログアウト",
+
+  "welcome": "ようこそ",
+  "company": "モニール＆サンジダ化学工業",
+  "marquee": "最高品質の化学製品 | 高速配送 | 大割引実施中",
+  "explore": "製品を見る",
+  "contact_btn": "お問い合わせ",
+  "shop": "購入する",
+
+  "feature1": "高速システム",
+  "feature2": "安全なログイン",
+  "feature3": "製品アップロード",
+  "feature4": "多言語",
+
   "career_title": "チームに参加",
   "apply": "応募する",
   "name": "名前",

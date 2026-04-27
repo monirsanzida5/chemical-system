@@ -3253,3 +3253,77 @@ button {
   transform: scale(1.1);
   background: #1ebe5d;
 }
+
+
+.about-premium {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: white;
+  padding-bottom: 50px;
+}
+
+/* HERO */
+.about-hero-premium {
+  height: 300px;
+  background: linear-gradient(120deg, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay-premium h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.hero-overlay-premium h3 {
+  color: #ffd700;
+}
+
+/* CARD */
+.glass-card-premium {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* STATS */
+.stats-premium {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* TIMELINE */
+.timeline-item {
+  background: #1e293b;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* TEAM */
+.team-grid-premium {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.team-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+}

@@ -1,4 +1,27 @@
 {
+  "home": "主页",
+  "products": "产品",
+  "career": "职业",
+  "about": "关于我们",
+  "services": "服务",
+  "contact": "联系",
+  "signup": "注册",
+  "login": "登录",
+  "dashboard": "仪表板",
+  "logout": "退出",
+
+  "welcome": "欢迎",
+  "company": "Monir 和 Sanzida 化工厂",
+  "marquee": "高质量化学品 | 快速交付 | 大折扣进行中",
+  "explore": "查看产品",
+  "contact_btn": "联系我们",
+  "shop": "立即购买",
+
+  "feature1": "快速系统",
+  "feature2": "安全登录",
+  "feature3": "产品上传",
+  "feature4": "多语言",
+
   "career_title": "加入我们",
   "apply": "申请",
   "name": "姓名",

@@ -1,4 +1,27 @@
 {
+  "home": "Home",
+  "products": "Products",
+  "career": "Career",
+  "about": "About",
+  "services": "Services",
+  "contact": "Contact",
+  "signup": "Signup",
+  "login": "Login",
+  "dashboard": "Dashboard",
+  "logout": "Logout",
+
+  "welcome": "Welcome",
+  "company": "Monir and Sanzida Chemicals Works",
+  "marquee": "Best Quality Chemicals | Fast Delivery | Big Discount Available Now",
+  "explore": "Explore Products",
+  "contact_btn": "Contact Us",
+  "shop": "Shop Now",
+
+  "feature1": "Fast System",
+  "feature2": "Secure Login",
+  "feature3": "Product Upload",
+  "feature4": "Multi Language",
+
   "career_title": "Join Our Team",
   "apply": "Apply Now",
   "name": "Your Name",
