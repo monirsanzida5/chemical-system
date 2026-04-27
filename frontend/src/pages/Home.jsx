@@ -23,10 +23,10 @@ export default function Home({ lang = "en" }) {
       explore: "Explore Products",
       contact: "Contact Us",
       shop: "Shop Now",
-      feature1: "Fast System",
-      feature2: "Secure Login",
-      feature3: "Product Upload",
-      feature4: "Multi Language"
+      feature1: "10-Hour Protection",
+      feature2: "Research-Based Formula",
+      feature3: "Strict Quality Control",
+      feature4: "Safe When Used Properly"
     },
     bn: {
       welcome: "স্বাগতম",
@@ -35,10 +35,10 @@ export default function Home({ lang = "en" }) {
       explore: "পণ্য দেখুন",
       contact: "যোগাযোগ করুন",
       shop: "কিনুন",
-      feature1: "দ্রুত সিস্টেম",
-      feature2: "নিরাপদ লগইন",
-      feature3: "পণ্য আপলোড",
-      feature4: "বহুভাষা"
+      feature1: "৮ ঘণ্টা সুরক্ষা",
+      feature2: "গবেষণাভিত্তিক ফর্মুলা",
+      feature3: "কঠোর মান নিয়ন্ত্রণ",
+      feature4: "সঠিক ব্যবহারে নিরাপদ"
     },
     jp: {
       welcome: "ようこそ",
