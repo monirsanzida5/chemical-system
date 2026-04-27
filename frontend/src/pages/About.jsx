@@ -83,7 +83,7 @@ export default function About({ lang = "en" }) {
 
       </div>
 
-      {/* JOURNEY (SIDE BY SIDE) */}
+      {/* JOURNEY */}
       <div className="timeline-premium">
 
         <h2>📜 {t.history}</h2>
@@ -108,20 +108,32 @@ export default function About({ lang = "en" }) {
         </div>
       </div>
 
-      {/* COMPANY INTRO (3 VIDEOS) */}
+      {/* COMPANY INTRO (VIDEOS) */}
       <div className="video-premium">
 
         <h2>🎥 {t.intro}</h2>
 
         <div className="video-grid">
-          <iframe src="https://www.youtube.com/embed/m5MnxgU8pnM" title="v1" />
-          <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" title="v2" />
-          <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" title="v3" />
+          <iframe
+            src="https://www.youtube.com/embed/m5MnxgU8pnM"
+            title="video1"
+            allowFullScreen
+          />
+          <iframe
+            src="https://www.youtube.com/embed/tgbNymZ7vqY"
+            title="video2"
+            allowFullScreen
+          />
+          <iframe
+            src="https://www.youtube.com/embed/ysz5S6PUM-U"
+            title="video3"
+            allowFullScreen
+          />
         </div>
 
       </div>
 
-      {/* TEAM CENTERED */}
+      {/* TEAM */}
       <div className="team-premium">
 
         <h2 className="team-title">{t.team}</h2>
@@ -129,17 +141,17 @@ export default function About({ lang = "en" }) {
         <div className="team-grid-premium">
 
           <div className="team-card hover-card">
-            <img src="https://via.placeholder.com/150" alt="" />
+            <img src="https://via.placeholder.com/150" alt="CEO" />
             <h3>CEO</h3>
           </div>
 
           <div className="team-card hover-card">
-            <img src="https://via.placeholder.com/150" alt="" />
+            <img src="https://via.placeholder.com/150" alt="Engineer" />
             <h3>Engineer</h3>
           </div>
 
           <div className="team-card hover-card">
-            <img src="https://via.placeholder.com/150" alt="" />
+            <img src="https://via.placeholder.com/150" alt="Marketing" />
             <h3>Marketing</h3>
           </div>
 
@@ -149,3 +161,4 @@ export default function About({ lang = "en" }) {
 
     </div>
   );
+}
