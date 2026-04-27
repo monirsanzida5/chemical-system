@@ -3256,7 +3256,7 @@ button {
 
 
 .about-premium {
-  background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+  background: #ffffff;
   padding: 40px 20px;
   min-height: 100vh;
 }
