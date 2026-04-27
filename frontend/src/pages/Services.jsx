@@ -31,6 +31,9 @@ export default function Services({ lang = "en" }) {
     }
   };
 
+  // ✅ FIX: SAFE LANGUAGE FALLBACK (ADD ONLY)
+  const t = text[lang] ? text[lang] : text["en"];
+
   useEffect(() => {
     fetch("/services.json")
       .then(res => res.json())
@@ -75,8 +78,8 @@ export default function Services({ lang = "en" }) {
 
       {/* HERO */}
       <div className="services-hero">
-        <h1>⚗️ {text[lang].title}</h1>
-        <p>{text[lang].subtitle}</p>
+        <h1>⚗️ {t.title}</h1>
+        <p>{t.subtitle}</p>
       </div>
 
       {/* DASHBOARD */}
@@ -111,7 +114,7 @@ export default function Services({ lang = "en" }) {
       {/* REQUEST FORM */}
       <div className="quote-box">
 
-        <h2>📦 {text[lang].quote}</h2>
+        <h2>📦 {t.quote}</h2>
 
         <input
           placeholder="Name"
@@ -132,7 +135,7 @@ export default function Services({ lang = "en" }) {
         />
 
         <button onClick={sendRequest}>
-          🚀 {text[lang].send}
+          🚀 {t.send}
         </button>
 
       </div>
@@ -140,7 +143,7 @@ export default function Services({ lang = "en" }) {
       {/* REQUEST HISTORY */}
       <div className="history-box">
 
-        <h2>📊 {text[lang].history}</h2>
+        <h2>📊 {t.history}</h2>
 
         {requests.length === 0 ? (
           <p>No requests yet</p>
@@ -171,7 +174,7 @@ export default function Services({ lang = "en" }) {
             </div>
 
             <button onClick={() => setSelected(null)}>
-              ❌ {text[lang].close}
+              ❌ {t.close}
             </button>
 
           </div>

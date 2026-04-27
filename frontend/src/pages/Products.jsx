@@ -59,11 +59,30 @@ export default function Products({ lang = "en", cart, setCart }) {
       price: "দাম",
       category: "ক্যাটাগরি",
       wishlist: "পছন্দ"
+    },
+    jp: {
+      title: "製品一覧",
+      search: "製品を検索...",
+      buy: "カートに追加",
+      price: "価格",
+      category: "カテゴリー",
+      wishlist: "お気に入り"
+    },
+    cn: {
+      title: "我们的产品",
+      search: "搜索产品...",
+      buy: "加入购物车",
+      price: "价格",
+      category: "类别",
+      wishlist: "收藏"
     }
   };
 
-  // ✅ NEW SAFE FALLBACK (ADD)
-  const tFinal = tData?.title ? tData : text[lang];
+  // ✅ STRONG FIX (multi fallback)
+  const tFinal =
+    (tData && tData.title && tData) ||
+    text[lang] ||
+    text["en"];
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
@@ -76,7 +95,7 @@ export default function Products({ lang = "en", cart, setCart }) {
     if (exists) {
       const updated = cart.map(item =>
         item.id === product.id
-          ? { ...item, qty: item.qty + 1 }
+          ? { ...item, qty: (item.qty || 1) + 1 } // ✅ FIX
           : item
       );
       setCart(updated);
@@ -148,7 +167,7 @@ export default function Products({ lang = "en", cart, setCart }) {
               <div className="product-img-box">
                 <img
                   src={p.img}
-                  alt="product"
+                  alt={p.name} // ✅ FIX (accessibility)
                   onClick={() =>
                     nav(`/product/${p.id}`, { state: p })
                   }
@@ -164,7 +183,6 @@ export default function Products({ lang = "en", cart, setCart }) {
 
                 <p>💰 {tFinal.price}: ${p.price}</p>
 
-                {/* BUTTONS */}
                 <button onClick={() => addToCart(p)}>
                   🛒 {tFinal.buy}
                 </button>

@@ -61,7 +61,7 @@ export default function About({ lang = "en" }) {
     }
   };
 
-  // 🔥 SAFE FALLBACK
+  // 🔥 SAFE FALLBACK (already correct, kept same)
   const t = text[lang] || text.en;
 
   const fadeUp = {
@@ -177,6 +177,8 @@ export default function About({ lang = "en" }) {
           src="https://www.youtube.com/embed/m5MnxgU8pnM"
           title="company video"
           allowFullScreen
+          loading="lazy"              // ✅ FIX (performance)
+          referrerPolicy="no-referrer-when-downgrade" // ✅ FIX
         />
       </motion.div>
 

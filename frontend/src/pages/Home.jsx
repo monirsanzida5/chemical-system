@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
-
+export default function Home({ lang = "en" }) {
   const [email, setEmail] = useState("");
 
   const subscribe = () => {
@@ -68,6 +67,10 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
     }
   };
 
+  // ✅ STRONG FIX (language fallback)
+  const currentLang = t[lang] ? lang : "en";
+  const langText = t[currentLang];
+
   const banners = [
     {
       img: "/images/1.jpg",
@@ -86,14 +89,13 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
     }
   ];
 
-  // ✅ FIX: dependency safe (Vercel strict build)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % banners.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [banners.length]); // ✅ FIXED
+  }, []);
 
   return (
     <div>
@@ -102,23 +104,23 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
       <div className="top-banner">
         <div className="banner-box">
 
-          <h2 className="typing">{t[lang]?.welcome}</h2>
+          <h2 className="typing">{langText.welcome}</h2>
 
           <p className="company-name">
-            {t[lang]?.company}
+            {langText.company}
           </p>
 
           <div className="marquee">
-            <span>🔥 {t[lang]?.marquee}</span>
+            <span>🔥 {langText.marquee}</span>
           </div>
 
           <div className="banner-buttons">
             <button className="explore-btn" onClick={() => nav("/products")}>
-              {t[lang]?.explore}
+              {langText.explore}
             </button>
 
             <button className="contact-btn" onClick={() => nav("/contact")}>
-              {t[lang]?.contact}
+              {langText.contact}
             </button>
           </div>
 
@@ -130,14 +132,18 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
 
         <div className="slider-overlay"></div>
 
-        <img src={banners[index].img} className="slider-img" alt="banner" />
+        <img
+          src={banners[index].img}
+          className="slider-img"
+          alt="banner"
+        />
 
         <div className="slider-content">
           <h1>{banners[index].title}</h1>
           <p>{banners[index].desc}</p>
 
           <button className="shop-btn" onClick={() => nav("/products")}>
-            {t[lang]?.shop}
+            {langText.shop}
           </button>
         </div>
 
@@ -145,10 +151,10 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
 
       {/* FEATURES */}
       <div className="feature-container">
-        <div className="feature-card">⚡ {t[lang]?.feature1}</div>
-        <div className="feature-card">🔐 {t[lang]?.feature2}</div>
-        <div className="feature-card">📦 {t[lang]?.feature3}</div>
-        <div className="feature-card">🌐 {t[lang]?.feature4}</div>
+        <div className="feature-card">⚡ {langText.feature1}</div>
+        <div className="feature-card">🔐 {langText.feature2}</div>
+        <div className="feature-card">📦 {langText.feature3}</div>
+        <div className="feature-card">🌐 {langText.feature4}</div>
       </div>
 
       {/* 🔥 ULTRA FOOTER */}
@@ -157,18 +163,18 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
         <div className="footer-grid">
 
           <div className="footer-col">
-            <h2>🏢 {t[lang]?.company}</h2>
+            <h2>🏢 {langText.company}</h2>
             <p>
-              {lang === "bn"
+              {currentLang === "bn"
                 ? "আমরা উচ্চ মানের কেমিক্যাল সরবরাহ করি বিশ্বব্যাপী"
                 : "We provide high quality chemical products worldwide"}
             </p>
 
             <div className="social-icons">
-              <span onClick={() => window.open("https://facebook.com", "_blank")}>📘</span>
-              <span onClick={() => window.open("https://youtube.com", "_blank")}>▶️</span>
-              <span onClick={() => window.open("https://twitter.com", "_blank")}>🐦</span>
-              <span onClick={() => window.open("https://google.com", "_blank")}>🌍</span>
+              <span onClick={()=>window.open("https://facebook.com","_blank")}>📘</span>
+              <span onClick={()=>window.open("https://youtube.com","_blank")}>▶️</span>
+              <span onClick={()=>window.open("https://twitter.com","_blank")}>🐦</span>
+              <span onClick={()=>window.open("https://google.com","_blank")}>🌍</span>
             </div>
           </div>
 
@@ -201,7 +207,7 @@ export default function Home({ lang = "en" }) {   // ✅ FIX: default lang
 
             <input
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e)=>setEmail(e.target.value)}
               placeholder="Enter your email"
             />
 

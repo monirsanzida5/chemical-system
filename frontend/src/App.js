@@ -25,7 +25,7 @@ import ProductDetails from "./pages/ProductDetails";
 
 export const LanguageContext = createContext();
 
-// 🌐 TRANSLATION
+// 🌐 TRANSLATION (✅ UPDATED - JP + CN ADDED)
 const text = {
   en: {
     home: "Home",
@@ -50,6 +50,30 @@ const text = {
     login: "লগইন",
     dashboard: "ড্যাশবোর্ড",
     logout: "লগআউট"
+  },
+  jp: {
+    home: "ホーム",
+    products: "製品",
+    career: "キャリア",
+    about: "私たちについて",
+    services: "サービス",
+    contact: "連絡先",
+    signup: "サインアップ",
+    login: "ログイン",
+    dashboard: "ダッシュボード",
+    logout: "ログアウト"
+  },
+  cn: {
+    home: "主页",
+    products: "产品",
+    career: "职业",
+    about: "关于我们",
+    services: "服务",
+    contact: "联系",
+    signup: "注册",
+    login: "登录",
+    dashboard: "仪表板",
+    logout: "退出"
   }
 };
 
@@ -72,37 +96,40 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
         )}
 
         <li><Link to="/cart">Cart ({cart.length})</Link></li>
-        <li><Link to="/">{text[lang].home}</Link></li>
-        <li><Link to="/products">{text[lang].products}</Link></li>
-        <li><Link to="/career">{text[lang].career}</Link></li>
-        <li><Link to="/about">{text[lang].about}</Link></li>
-        <li><Link to="/services">{text[lang].services}</Link></li>
-        <li><Link to="/contact">{text[lang].contact}</Link></li>
+        <li><Link to="/">{text[lang]?.home}</Link></li>
+        <li><Link to="/products">{text[lang]?.products}</Link></li>
+        <li><Link to="/career">{text[lang]?.career}</Link></li>
+        <li><Link to="/about">{text[lang]?.about}</Link></li>
+        <li><Link to="/services">{text[lang]?.services}</Link></li>
+        <li><Link to="/contact">{text[lang]?.contact}</Link></li>
         <li><Link to="/chat">AI Chat</Link></li>
 
-        {!user && <li><Link to="/signup">{text[lang].signup}</Link></li>}
-        {!user && <li><Link to="/login">{text[lang].login}</Link></li>}
+        {!user && <li><Link to="/signup">{text[lang]?.signup}</Link></li>}
+        {!user && <li><Link to="/login">{text[lang]?.login}</Link></li>}
 
-        {user && <li><Link to="/dashboard">{text[lang].dashboard}</Link></li>}
+        {user && <li><Link to="/dashboard">{text[lang]?.dashboard}</Link></li>}
 
         {user && (
           <li>
             <button className="logout-btn" onClick={logout}>
-              {text[lang].logout}
+              {text[lang]?.logout}
             </button>
           </li>
         )}
       </ul>
 
+      {/* ✅ LANGUAGE SELECT FIX */}
       <select value={lang} onChange={(e) => setLang(e.target.value)}>
         <option value="en">EN</option>
         <option value="bn">BN</option>
+        <option value="jp">JP</option>
+        <option value="cn">CN</option>
       </select>
     </nav>
   );
 }
 
-// 🔐 SIGNUP
+// 🔐 SIGNUP (unchanged)
 function Signup() {
   const nav = useNavigate();
 
@@ -137,7 +164,7 @@ function Signup() {
   );
 }
 
-// 🔐 LOGIN
+// 🔐 LOGIN (unchanged)
 function Login({ setUser }) {
   const nav = useNavigate();
 
@@ -170,7 +197,7 @@ function Login({ setUser }) {
   );
 }
 
-// 📊 DASHBOARD
+// 📊 DASHBOARD (unchanged)
 function Dashboard({ user, setUser }) {
   const [edit, setEdit] = useState(false);
 
@@ -209,7 +236,7 @@ function Dashboard({ user, setUser }) {
   );
 }
 
-// 🚀 MAIN APP
+// 🚀 MAIN APP (unchanged)
 export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);

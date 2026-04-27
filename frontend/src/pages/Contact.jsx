@@ -25,7 +25,10 @@ export default function Contact() {
 
     localStorage.setItem(
       "messages",
-      JSON.stringify([...old, { ...form, date: new Date().toLocaleString() }])
+      JSON.stringify([
+        ...old,
+        { ...form, date: new Date().toLocaleString() }
+      ])
     );
 
     setSent(true);
@@ -90,11 +93,11 @@ export default function Contact() {
 
           <div className="quick-actions">
             <a href="tel:+8801XXXXXXXXX">
-              <button>📞 Call Now</button>
+              <button type="button">📞 Call Now</button>
             </a>
 
             <a href="mailto:support@company.com">
-              <button>📧 Email</button>
+              <button type="button">📧 Email</button>
             </a>
           </div>
         </div>
@@ -117,7 +120,7 @@ export default function Contact() {
         className="whatsapp-float"
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         💬
       </a>

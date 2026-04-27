@@ -1,24 +1,35 @@
-import { useEffect, useState, useContext } from "react"; // ✅ ADD useContext
-import { LanguageContext } from "../App"; // ✅ ADD
+import { useEffect, useState, useContext } from "react";
+import { LanguageContext } from "../App";
 
 export default function useTranslate(lang) {
 
-  // ✅ NEW: global lang from context
   const context = useContext(LanguageContext);
 
-  // ✅ যদি lang না পাঠানো হয় → context থেকে নিবে
+  // ✅ SAFE language resolve (FIXED)
   const activeLang = lang || context?.lang || "en";
 
   const [t, setT] = useState({});
 
   useEffect(() => {
 
-    import(`../locales/${activeLang}.json`)
-      .then(res => setT(res.default))
-      .catch(() => import(`../locales/en.json`)
-      .then(res => setT(res.default)));
+    let mounted = true;
 
-  }, [activeLang]); // ✅ CHANGE
+    import(`../locales/${activeLang}.json`)
+      .then(res => {
+        if (mounted) setT(res.default);
+      })
+      .catch(() => {
+        import(`../locales/en.json`)
+          .then(res => {
+            if (mounted) setT(res.default);
+          });
+      });
+
+    return () => {
+      mounted = false;
+    };
+
+  }, [activeLang]);
 
   return t;
 }
