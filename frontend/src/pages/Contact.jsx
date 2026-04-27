@@ -87,7 +87,7 @@ export default function Contact() {
         <div className="contact-info">
           <h2>📍 Company Info</h2>
 
-          <p>📧 support@company.com</p>
+          <p>📧 adilbaxoon@gmail.com</p>
           <p>📞 +8801XXXXXXXXX</p>
           <p>🏭 Dhaka, Bangladesh</p>
 
