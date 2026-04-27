@@ -16,10 +16,53 @@ export default function About({ lang = "en" }) {
       stats: "Our Achievements",
       intro: "Company Introduction",
       company: "Monir & Sanzida Chemicals Works"
+    },
+
+    bn: {
+      title: "আমাদের সম্পর্কে",
+      desc: "আমরা একটি আধুনিক গ্লোবাল কেমিক্যাল কোম্পানি, বিশ্বব্যাপী মানসম্মত সেবা প্রদান করি।",
+      mission: "আমাদের লক্ষ্য",
+      missionText: "নিরাপদ ও উদ্ভাবনী কেমিক্যাল সেবা বিশ্বব্যাপী প্রদান করা।",
+      vision: "আমাদের ভিশন",
+      visionText: "বিশ্বমানের কেমিক্যাল কোম্পানি হিসেবে প্রতিষ্ঠিত হওয়া।",
+      team: "আমাদের টিম",
+      history: "আমাদের যাত্রা",
+      stats: "আমাদের অর্জন",
+      intro: "কোম্পানি পরিচিতি",
+      company: "মনির ও সানজিদা কেমিক্যালস ওয়ার্কস"
+    },
+
+    jp: {
+      title: "私たちについて",
+      desc: "私たちは革新と品質を世界中に提供する現代的な化学会社です。",
+      mission: "私たちの使命",
+      missionText: "安全で革新的な化学ソリューションを提供する。",
+      vision: "私たちのビジョン",
+      visionText: "世界をリードする化学企業になる。",
+      team: "チーム",
+      history: "歴史",
+      stats: "実績",
+      intro: "会社紹介",
+      company: "モニール＆サンジダ化学工業"
+    },
+
+    cn: {
+      title: "关于我们",
+      desc: "我们是一家现代化的全球化工公司，提供创新和高质量服务。",
+      mission: "我们的使命",
+      missionText: "提供安全和创新的化学解决方案。",
+      vision: "我们的愿景",
+      visionText: "成为世界领先的化工企业。",
+      team: "我们的团队",
+      history: "发展历程",
+      stats: "我们的成就",
+      intro: "公司介绍",
+      company: "Monir 和 Sanzida 化工厂"
     }
   };
 
-  const t = text[lang];
+  // 🔥 SAFE FALLBACK
+  const t = text[lang] || text.en;
 
   const fadeUp = {
     hidden: { opacity: 0, y: 60 },
