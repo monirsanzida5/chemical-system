@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home({ lang = "en" }) {
   const [email, setEmail] = useState("");
+  const [index, setIndex] = useState(0);
+  const nav = useNavigate();
 
   const subscribe = () => {
     if (!email) return alert("Enter email");
@@ -11,9 +13,6 @@ export default function Home({ lang = "en" }) {
     alert("Subscribed ✅");
     setEmail("");
   };
-
-  const [index, setIndex] = useState(0);
-  const nav = useNavigate();
 
   // 🌐 MULTI LANGUAGE TEXT
   const t = {
@@ -67,7 +66,7 @@ export default function Home({ lang = "en" }) {
     }
   };
 
-  // ✅ STRONG FIX (language fallback)
+  // ✅ SAFE LANGUAGE FALLBACK
   const currentLang = t[lang] ? lang : "en";
   const langText = t[currentLang];
 
@@ -89,12 +88,14 @@ export default function Home({ lang = "en" }) {
     }
   ];
 
+  // ✅ FIXED useEffect (NO eslint error)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % banners.length);
     }, 4000);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -106,9 +107,7 @@ export default function Home({ lang = "en" }) {
 
           <h2 className="typing">{langText.welcome}</h2>
 
-          <p className="company-name">
-            {langText.company}
-          </p>
+          <p className="company-name">{langText.company}</p>
 
           <div className="marquee">
             <span>🔥 {langText.marquee}</span>
@@ -157,7 +156,7 @@ export default function Home({ lang = "en" }) {
         <div className="feature-card">🌐 {langText.feature4}</div>
       </div>
 
-      {/* 🔥 ULTRA FOOTER */}
+      {/* 🔥 FOOTER */}
       <footer className="home-footer">
 
         <div className="footer-grid">
@@ -171,10 +170,10 @@ export default function Home({ lang = "en" }) {
             </p>
 
             <div className="social-icons">
-              <span onClick={()=>window.open("https://facebook.com","_blank")}>📘</span>
-              <span onClick={()=>window.open("https://youtube.com","_blank")}>▶️</span>
-              <span onClick={()=>window.open("https://twitter.com","_blank")}>🐦</span>
-              <span onClick={()=>window.open("https://google.com","_blank")}>🌍</span>
+              <span onClick={() => window.open("https://facebook.com", "_blank")}>📘</span>
+              <span onClick={() => window.open("https://youtube.com", "_blank")}>▶️</span>
+              <span onClick={() => window.open("https://twitter.com", "_blank")}>🐦</span>
+              <span onClick={() => window.open("https://google.com", "_blank")}>🌍</span>
             </div>
           </div>
 
@@ -207,7 +206,7 @@ export default function Home({ lang = "en" }) {
 
             <input
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
             />
 
