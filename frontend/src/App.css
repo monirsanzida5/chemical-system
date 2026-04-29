@@ -3328,23 +3328,119 @@ button {
   border-radius: 10px;
 }
 
-/* =========================
-   BACKGROUND (ASH PREMIUM)
-========================= */
-.about-premium {
-  background: #e5e7eb;
-  padding: 40px 20px;
-  min-height: 100vh;
+.about-hero-premium h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.about-hero-premium h3 {
+  font-size: 20px;
+  opacity: 0.9;
 }
 
 /* =========================
-   HERO SECTION
+   GRID 2 CARDS
 ========================= */
-.about-hero-premium {
-  text-align: center;
-  padding: 50px 20px;
-  background: linear-gradient(135deg, #1e3a8a, #7c3aed);
-  color: white;
-  border-radius: 16px;
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   margin-bottom: 30px;
+}
+
+/* =========================
+   CARD STYLE
+========================= */
+.card,
+.timeline-item,
+.team-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+
+/* =========================
+   HOVER EFFECT (IMPORTANT)
+========================= */
+.hover-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   JOURNEY ROW (SIDE BY SIDE)
+========================= */
+.timeline-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.timeline-premium h2 {
+  margin-bottom: 15px;
+}
+
+/* =========================
+   VIDEO GRID (3 VIDEOS)
+========================= */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.video-grid iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* =========================
+   TEAM CENTERED
+========================= */
+.team-premium {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.team-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.team-grid-premium {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.team-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* =========================
+   RESPONSIVE FIX
+========================= */
+@media (max-width: 768px) {
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-row {
+    flex-direction: column;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid-premium {
+    flex-direction: column;
+    align-items: center;
+  }
 }
