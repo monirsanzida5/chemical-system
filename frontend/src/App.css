@@ -3327,3 +3327,24 @@ button {
   padding: 20px;
   border-radius: 10px;
 }
+
+/* =========================
+   BACKGROUND (ASH PREMIUM)
+========================= */
+.about-premium {
+  background: #e5e7eb;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.about-hero-premium {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+  color: white;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
