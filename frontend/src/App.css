@@ -3294,3 +3294,15 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+/* STATS */
+.stats-premium {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+}
