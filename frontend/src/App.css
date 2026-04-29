@@ -3255,3 +3255,18 @@ button {
 }
 
 
+.about-premium {
+  background: #ae09e0;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* HERO */
+.about-hero-premium {
+  height: 300px;
+  background: linear-gradient(120deg, #2563eb, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
