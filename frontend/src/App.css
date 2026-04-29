@@ -3270,3 +3270,27 @@ button {
   justify-content: center;
   text-align: center;
 }
+
+.hero-overlay-premium h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.hero-overlay-premium h3 {
+  color: #ffd700;
+}
+
+/* CARD */
+.glass-card-premium {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
