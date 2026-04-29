@@ -3255,12 +3255,6 @@ button {
 }
 
 
-.about-premium {
-  background: #ae09e0;
-  padding: 40px 20px;
-  min-height: 100vh;
-}
-
 /* HERO */
 .about-hero-premium {
   height: 300px;
@@ -3270,6 +3264,20 @@ button {
   justify-content: center;
   text-align: center;
 }
+
+/* =========================
+   HERO SECTION
+========================= */
+.about-hero-premium {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+  color: white;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+
 
 .hero-overlay-premium h1 {
   font-size: 40px;
@@ -3354,7 +3362,7 @@ button {
 .card,
 .timeline-item,
 .team-card {
-  background: white;
+  background: rgb(5, 197, 117);
   padding: 20px;
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);

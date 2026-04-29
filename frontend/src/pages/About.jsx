@@ -125,7 +125,7 @@ export default function About({ lang = "en" }) {
             allowFullScreen
           />
           <iframe
-            src="https://www.youtube.com/embed/iRNl0iWE490&list=RDiRNl0iWE490&start"
+            src="https://www.youtube.com/embed/m5MnxgU8pnM"
             title="video3"
             allowFullScreen
           />
