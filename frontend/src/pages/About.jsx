@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function About({ lang = "en" }) {
-
   const text = {
     en: {
       title: "About Us",
@@ -59,7 +58,7 @@ export default function About({ lang = "en" }) {
   const t = text[lang] || text.en;
 
   return (
-    <div className="about-premium">
+    <div className="about-page">
 
       {/* HERO */}
       <div className="about-hero-premium">
@@ -70,93 +69,123 @@ export default function About({ lang = "en" }) {
 
       {/* MISSION / VISION */}
       <div className="grid-2">
-
-        <div className="card hover-card">
-          <h2>🎯 {t.mission}</h2>
-          <p>{t.missionText}</p>
+        <div className="glass-card-premium">
+          <h2 className="text-center">🎯 {t.mission}</h2>
+          <p className="text-center">{t.missionText}</p>
         </div>
 
-        <div className="card hover-card">
-          <h2>🚀 {t.vision}</h2>
-          <p>{t.visionText}</p>
+        <div className="glass-card-premium">
+          <h2 className="text-center">🚀 {t.vision}</h2>
+          <p className="text-center">{t.visionText}</p>
         </div>
-
       </div>
 
-      {/* JOURNEY */}
+      {/* JOURNEY (TIMELINE) */}
       <div className="timeline-premium">
-
-        <h2>📜 {t.history}</h2>
+        <h2 className="text-center">📜 {t.history}</h2>
 
         <div className="timeline-row">
-
           <div className="timeline-item hover-card">
             <span>2018</span>
-            <p>Company Founded</p>
+            <p>{t["history"]}: Company Founded</p>
           </div>
 
           <div className="timeline-item hover-card">
             <span>2020</span>
-            <p>Global Expansion</p>
+            <p>{t["history"]}: Global Expansion</p>
           </div>
 
           <div className="timeline-item hover-card">
             <span>2023</span>
-            <p>100+ International Clients</p>
+            <p>{t["history"]}: 100+ International Clients</p>
           </div>
-
         </div>
       </div>
 
       {/* COMPANY INTRO (VIDEOS) */}
       <div className="video-premium">
-
-        <h2>🎥 {t.intro}</h2>
+        <h2 className="text-center">🎥 {t.intro}</h2>
 
         <div className="video-grid">
           <iframe
             src="https://www.youtube.com/embed/m5MnxgU8pnM"
-            title="video1"
+            title={t["intro"] + " - 1"}
             allowFullScreen
           />
+
           <iframe
             src="https://www.youtube.com/embed/tgbNymZ7vqY"
-            title="video2"
+            title={t["intro"] + " - 2"}
             allowFullScreen
           />
+
           <iframe
             src="https://www.youtube.com/embed/m5MnxgU8pnM"
-            title="video3"
+            title={t["intro"] + " - 3"}
             allowFullScreen
           />
         </div>
-
       </div>
 
       {/* TEAM */}
       <div className="team-premium">
-
         <h2 className="team-title">{t.team}</h2>
 
         <div className="team-grid-premium">
-
           <div className="team-card hover-card">
-            <img src="https://via.placeholder.com/150" alt="CEO" />
+            <img
+              src="https://via.placeholder.com/150"
+              alt="CEO"
+              loading="lazy"
+            />
             <h3>CEO</h3>
           </div>
 
           <div className="team-card hover-card">
-            <img src="https://via.placeholder.com/150" alt="Engineer" />
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Engineer"
+              loading="lazy"
+            />
             <h3>Engineer</h3>
           </div>
 
           <div className="team-card hover-card">
-            <img src="https://via.placeholder.com/150" alt="Marketing" />
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Marketing"
+              loading="lazy"
+            />
             <h3>Marketing</h3>
           </div>
+        </div>
+      </div>
 
+      {/* ADDED: COMPANY STATS (GLOBAL) */}
+      <div className="stats-premium">
+        <div className="stat-card">
+          <h2 className="text-center">🏭</h2>
+          <p className="text-center">5K+</p>
+          <p className="text-center">Products</p>
         </div>
 
+        <div className="stat-card">
+          <h2 className="text-center">🌍</h2>
+          <p className="text-center">60+</p>
+          <p className="text-center">Countries</p>
+        </div>
+
+        <div className="stat-card">
+          <h2 className="text-center">⭐</h2>
+          <p className="text-center">4.9</p>
+          <p className="text-center">Rating</p>
+        </div>
+
+        <div className="stat-card">
+          <h2 className="text-center">🛡️</h2>
+          <p className="text-center">100%</p>
+          <p className="text-center">Safety First</p>
+        </div>
       </div>
 
     </div>

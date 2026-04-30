@@ -1,0 +1,162 @@
+/* MAIN PAGE */
+.about-page {
+  padding: 40px;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* HERO – PREMIUM STYLE */
+.about-hero-premium {
+  height: 350px;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  border-radius: 12px;
+}
+
+/* MISSION / VISION GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 40px;
+}
+
+/* GLASS CARD PREMIUM (used for mission & vision) */
+.glass-card-premium {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 15px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.glass-card-premium:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* GENERAL HOVER ANIMATION */
+.hover-card {
+  transition: 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-8px);
+}
+
+/* TIMELINE PREMIUM */
+.timeline-premium {
+  padding: 40px;
+  text-align: center;
+}
+.timeline-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.timeline-item {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  width: 260px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.timeline-item span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00c853;
+}
+
+/* VIDEO PREMIUM */
+.video-premium {
+  text-align: center;
+  padding: 30px 0;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+.video-premium iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  border: none;
+}
+
+/* TEAM PREMIUM */
+.team-premium {
+  padding: 40px 0;
+}
+.team-grid-premium {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+.team-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  width: 160px;
+  text-align: center;
+  overflow: hidden;
+}
+.team-card img {
+  width: 100%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 4px solid #00c853;
+}
+
+/* STATS PREMIUM (This is new) */
+.stats-premium {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+  width: 140px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+.stat-card:hover {
+  transform: scale(1.1) translateY(-5px);
+}
+.text-center {
+  text-align: center;
+}
+
+/* এখান থেকে নিচের সব কমেন্টেড শৈলী তুমি রাখতে পারো, যদি চাইস → তোমার অন্য ডিজাইন বা theme এর জন্য backup হিসেবে ব্যবহার করবে */
+/* আমি কিছুই ডিলিট করি নি, শুধু পরিষ্কারভাবে গুছিয়ে রাখছি (যে জিনিসগুলো তোমার JSX এ ব্যবহার হয় না, সেগুলো কমেন্ট করে রাখলেও চলবে) */
+
+/* নিচের সব কিছু তুমি রাখতে পারো যদি চাও */
+/* যেমন: about-hero, about-hero-modern, about-clean, glass-card, stats-modern, team-section ইত্যাদি */
+
+/*
+
+এখানে থেকে নিচের সব কমেন্ট করে রাখতে পারো (যেহেতু তোমার JSX এ এগুলো ব্যবহার হয় না, শুধু ভবিষ্যতের জন্য backup রাখ
