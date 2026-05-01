@@ -7,16 +7,39 @@
   font-family: Arial, sans-serif;
 }
 
-/* HERO – PREMIUM STYLE */
+/* HERO – PREMIUM STYLE (যাতে লেখা একেবারে কেন্দ্রে, পাশাপাশি না হয়) */
 .about-hero-premium {
   height: 350px;
   background: linear-gradient(135deg, #141e30, #243b55);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
   border-radius: 12px;
+  padding: 20px;
+  gap: 8px;
+}
+
+.about-hero-premium h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.about-hero-premium h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.about-hero-premium p {
+  margin: 0;
+  font-size: 16px;
+  max-width: 600px;
+  line-height: 1.5;
 }
 
 /* MISSION / VISION GRID */
@@ -58,6 +81,7 @@
   padding: 40px;
   text-align: center;
 }
+
 .timeline-row {
   display: flex;
   justify-content: center;
@@ -65,6 +89,7 @@
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
 .timeline-item {
   background: #1e293b;
   padding: 20px;
@@ -74,6 +99,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 .timeline-item span {
   font-size: 1.2rem;
   font-weight: bold;
@@ -85,12 +111,14 @@
   text-align: center;
   padding: 30px 0;
 }
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding: 0 20px;
 }
+
 .video-premium iframe {
   width: 100%;
   height: 300px;
@@ -102,6 +130,13 @@
 .team-premium {
   padding: 40px 0;
 }
+
+.team-title {
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .team-grid-premium {
   display: flex;
   justify-content: center;
@@ -109,15 +144,19 @@
   padding: 0 20px;
   flex-wrap: wrap;
 }
+
+/* TEAM CARD – লেখা বুঝা যাবে (হালকা pelka / border + ভালো contrast) */
 .team-card {
-  background: white;
+  background: #f1f5f9;
   padding: 18px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   width: 160px;
   text-align: center;
   overflow: hidden;
+  border: 2px solid #00c853;
 }
+
 .team-card img {
   width: 100%;
   border-radius: 50%;
@@ -125,7 +164,14 @@
   border: 4px solid #00c853;
 }
 
-/* STATS PREMIUM (This is new) */
+.team-card h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+}
+
+/* STATS PREMIUM */
 .stats-premium {
   display: flex;
   justify-content: center;
@@ -144,17 +190,14 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transition: 0.3s;
 }
+
 .stat-card:hover {
   transform: scale(1.1) translateY(-5px);
 }
+
+/* TEXT ALIGN UTILITY */
 .text-center {
   text-align: center;
 }
 
-/* এখান থেকে নিচের সব কমেন্টেড শৈলী তুমি রাখতে পারো, যদি চাইস → তোমার অন্য ডিজাইন বা theme এর জন্য backup হিসেবে ব্যবহার করবে */
-/* আমি কিছুই ডিলিট করি নি, শুধু পরিষ্কারভাবে গুছিয়ে রাখছি (যে জিনিসগুলো তোমার JSX এ ব্যবহার হয় না, সেগুলো কমেন্ট করে রাখলেও চলবে) */
-
-/* নিচের সব কিছু তুমি রাখতে পারো যদি চাও */
-/* যেমন: about-hero, about-hero-modern, about-clean, glass-card, stats-modern, team-section ইত্যাদি */
-
-/*এখানে থেকে নিচের সব কমেন্ট করে রাখতে পারো (যেহেতু তোমার JSX এ এগুলো ব্যবহার হয় না, শুধু ভবিষ্যতের জন্য backup রাখ
+/* এটা শেষ — এটা `about.css` (এখন টপ ব্যানার এবং টিম কার্ড ঠিক আছে) */
