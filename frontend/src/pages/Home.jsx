@@ -65,12 +65,12 @@ export default function Home({ lang = "en" }) {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % banners.length);
-    }, 4000);
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % banners.length);
+  }, 4000);
 
-    return () => clearInterval(interval);
-  }, []);
+  return () => clearInterval(interval);
+}, [banners.length]);
 
   return (
     <div>
