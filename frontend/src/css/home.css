@@ -28,7 +28,7 @@ body {
 .banner-box {
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.1);
-  padding: 25px 40px;
+  padding: 50px 250px;
   border-radius: 15px;
   text-align: center;
   color: white;
@@ -46,7 +46,7 @@ body {
 .typing {
   font-size: 28px;
   font-weight: bold;
-  border-right: 3px solid white;
+  border-right: 3px solid rgb(255, 255, 255);
   white-space: nowrap;
   overflow: hidden;
   width: 0;
@@ -64,7 +64,7 @@ body {
 
 /* COMPANY NAME */
 .company-name {
-  font-size: 20px;
+  font-size: 50px;
   margin-top: 10px;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
 }

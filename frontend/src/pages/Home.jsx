@@ -6,7 +6,7 @@ import "../css/home.css";
 const t = {
   en: {
     welcome: "Welcome to Chemical System",
-    company: "Chemical System",
+    company: "Monir & Sanzida Chemicals Works",
     marquee: "High quality chemical products, 24×7 support, fast delivery.",
     explore: "Explore Products",
     contact: "Contact Us",
@@ -18,7 +18,7 @@ const t = {
   },
   bn: {
     welcome: "Chemical System এ স্বাগতম",
-    company: "Chemical System",
+    company: "Monir & Sanzida Chemicals Works",
     marquee: "উচ্চ মানের কেমিক্যাল, ২৪×৭ সাপোর্ট, দ্রুত ডেলিভারি।",
     explore: "প্রোডাক্ট ঘুরে দেখুন",
     contact: "যোগাযোগ",
