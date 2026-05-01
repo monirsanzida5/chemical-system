@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-
+import "../css/ai-chat.css";
 
 export default function Chat() {
   const [msg, setMsg] = useState("");
@@ -8,30 +8,24 @@ export default function Chat() {
   ]);
   const [typing, setTyping] = useState(false);
 
-
   const chatEndRef = useRef(null);
-
 
   // 🔽 AUTO SCROLL
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-
   // 🎤 VOICE INPUT
   const startVoice = () => {
     const recognition = new window.webkitSpeechRecognition();
     recognition.lang = "en-US";
 
-
     recognition.onresult = (e) => {
       setMsg(e.results[0][0].transcript);
     };
 
-
     recognition.start();
   };
-
 
   // 🔊 VOICE OUTPUT
   const speak = (text) => {
@@ -40,19 +34,15 @@ export default function Chat() {
     window.speechSynthesis.speak(speech);
   };
 
-
   // 📩 SEND
   const sendMessage = async () => {
     if (!msg.trim()) return;
 
-
     const userText = msg;
-
 
     setMessages((prev) => [...prev, { type: "user", text: userText }]);
     setMsg("");
     setTyping(true);
-
 
     try {
       const res = await fetch("http://localhost:5000/chat", {
@@ -63,23 +53,15 @@ export default function Chat() {
         body: JSON.stringify({ message: userText })
       });
 
-
       const data = await res.json();
-
 
       setTyping(false);
 
-
       const reply = data.reply || "No reply";
-
 
       setMessages((prev) => [...prev, { type: "ai", text: reply }]);
 
-
-      // 🔊 SPEAK
       speak(reply);
-
-
     } catch {
       setTyping(false);
       setMessages((prev) => [
@@ -89,18 +71,16 @@ export default function Chat() {
     }
   };
 
-
   return (
     <div className="chat-container">
 
-
       {/* HEADER */}
-      <div className="chat-header">🤖 AI Chat</div>
-
+      <div className="chat-header">
+        🤖 AI Support Chat
+      </div>
 
       {/* BODY */}
       <div className="chat-box">
-
 
         {messages.map((m, i) => (
           <div key={i} className={`msg-row ${m.type}`}>
@@ -110,7 +90,6 @@ export default function Chat() {
           </div>
         ))}
 
-
         {/* ⏳ TYPING */}
         {typing && (
           <div className="msg-row ai">
@@ -118,13 +97,13 @@ export default function Chat() {
           </div>
         )}
 
-
         <div ref={chatEndRef}></div>
-      </div>
 
+      </div>
 
       {/* INPUT */}
       <div className="chat-input">
+
         <input
           value={msg}
           onChange={(e) => setMsg(e.target.value)}
@@ -132,15 +111,21 @@ export default function Chat() {
           placeholder="Type message..."
         />
 
+        <button
+          className="send-btn"
+          onClick={sendMessage}
+        >
+          ➤
+        </button>
 
-        <button onClick={sendMessage}>➤</button>
-
-
-        <button className="voice-btn" onClick={startVoice}>
+        <button
+          className="voice-btn"
+          onClick={startVoice}
+        >
           🎤
         </button>
-      </div>
 
+      </div>
 
     </div>
   );

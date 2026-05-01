@@ -1,0 +1,95 @@
+/* ADMIN JOBS PANEL */
+
+/* PANEL CONTAINER */
+.admin-panel.admin-jobs {
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.admin-panel.admin-jobs h1 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.admin-panel.admin-jobs p {
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* FORM LAYOUT */
+.admin-jobs .form-row {
+  margin-bottom: 15px;
+}
+
+.admin-jobs label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.admin-jobs input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.admin-jobs input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
+}
+
+/* HINT TEXT */
+.admin-jobs .hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+  opacity: 0.9;
+}
+
+/* SUBMIT ROW */
+.admin-jobs .submit-row {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.admin-jobs .btn-primary {
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+/* DARK MODE SUPPORT (optional) */
+
+/* যদি dark mode support চাও, তোমার অন্য admin.css এর dark থেকে override করবে */
+.admin-panel.admin-jobs.dark {
+  background: #1e293b;
+  border-color: #334155;
+  color: white;
+}
+
+.admin-panel.admin-jobs.dark h1 {
+  color: white;
+}
+
+.admin-panel.admin-jobs.dark p,
+.admin-panel.admin-jobs.dark label {
+  color: #cbd5e1;
+}
+
+.admin-panel.admin-jobs.dark input {
+  background: #111827;
+  color: white;
+  border: 1px solid #334155;
+}
+
+/* এটা শেষ — এটা `adminjobs.css` (AdminJobs.jsx এর জন্য) */

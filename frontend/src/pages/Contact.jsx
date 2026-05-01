@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/contact.css";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -8,6 +9,7 @@ export default function Contact() {
   });
 
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const whatsappNumber = "8801XXXXXXXXX";
 
@@ -15,11 +17,17 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.name) newErrors.name = "Name is required";
+    if (!form.email) newErrors.email = "Email is required";
+    if (!form.message) newErrors.message = "Message is required";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const sendMessage = () => {
-    if (!form.name || !form.email || !form.message) {
-      alert("সব ফিল্ড পূরণ করো");
-      return;
-    }
+    if (!validateForm()) return;
 
     const old = JSON.parse(localStorage.getItem("messages") || "[]");
 
@@ -53,28 +61,51 @@ export default function Contact() {
         <div className="contact-form">
           <h2>📩 Send Message</h2>
 
-          <input
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-          />
+          <div className="form-row">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={form.name}
+              onChange={handleChange}
+              className={errors.name ? "invalid" : ""}
+            />
+            {errors.name && (
+              <p className="error">{errors.name}</p>
+            )}
+          </div>
 
-          <input
-            name="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={handleChange}
-          />
+          <div className="form-row">
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={handleChange}
+              className={errors.email ? "invalid" : ""}
+            />
+            {errors.email && (
+              <p className="error">{errors.email}</p>
+            )}
+          </div>
 
-          <textarea
-            name="message"
-            placeholder="Write your message..."
-            value={form.message}
-            onChange={handleChange}
-          />
+          <div className="form-row">
+            <textarea
+              name="message"
+              placeholder="Write your message..."
+              value={form.message}
+              onChange={handleChange}
+              className={errors.message ? "invalid" : ""}
+            />
+            {errors.message && (
+              <p className="error">{errors.message}</p>
+            )}
+          </div>
 
-          <button onClick={sendMessage}>
+          <button
+            className="send-btn"
+            onClick={sendMessage}
+          >
             🚀 Send Message
           </button>
 
@@ -87,17 +118,21 @@ export default function Contact() {
         <div className="contact-info">
           <h2>📍 Company Info</h2>
 
-          <p>📧 adilbaxoon@gmail.com</p>
-          <p>📞 +8801XXXXXXXXX</p>
-          <p>🏭 Dhaka, Bangladesh</p>
+          <p>📧 <strong>adilbaxoon@gmail.com</strong></p>
+          <p>📞 <strong>+8801XXXXXXXXX</strong></p>
+          <p>🏭 <strong>Dhaka, Bangladesh</strong></p>
 
           <div className="quick-actions">
             <a href="tel:+8801XXXXXXXXX">
-              <button type="button">📞 Call Now</button>
+              <button type="button" className="quick-btn call-btn">
+                📞 Call Now
+              </button>
             </a>
 
-            <a href="mailto:support@company.com">
-              <button type="button">📧 Email</button>
+            <a href="mailto:adilbaxoon@gmail.com">
+              <button type="button" className="quick-btn email-btn">
+                📧 Email
+              </button>
             </a>
           </div>
         </div>
@@ -110,12 +145,13 @@ export default function Contact() {
 
         <iframe
           className="map"
-          title="map"
+          title="Our office in Dhaka, Bangladesh"
           src="https://www.google.com/maps?q=Dhaka,Bangladesh&output=embed"
+          loading="lazy"
         ></iframe>
       </div>
 
-      {/* 🔥 FLOATING WHATSAPP BUTTON */}
+      {/* WHATSAPP FLOAT BUTTON */}
       <a
         className="whatsapp-float"
         href={`https://wa.me/${whatsappNumber}`}

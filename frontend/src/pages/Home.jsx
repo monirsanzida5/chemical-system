@@ -1,5 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/home.css";
+
+// 🌍 SIMPLE LANGUAGE OBJECT
+const t = {
+  en: {
+    welcome: "Welcome to Chemical System",
+    company: "Chemical System",
+    marquee: "High quality chemical products, 24×7 support, fast delivery.",
+    explore: "Explore Products",
+    contact: "Contact Us",
+    shop: "Shop Now",
+    feature1: "Fast Delivery",
+    feature2: "Secure Transactions",
+    feature3: "24×7 Support",
+    feature4: "Global Shipping"
+  },
+  bn: {
+    welcome: "Chemical System এ স্বাগতম",
+    company: "Chemical System",
+    marquee: "উচ্চ মানের কেমিক্যাল, ২৪×৭ সাপোর্ট, দ্রুত ডেলিভারি।",
+    explore: "প্রোডাক্ট ঘুরে দেখুন",
+    contact: "যোগাযোগ",
+    shop: "কিনুন এখনই",
+    feature1: "দ্রুত ডেলিভারি",
+    feature2: "সুরক্ষিত লেনদেন",
+    feature3: "২৪×৭ সাপোর্ট",
+    feature4: "আন্তর্জাতিক শিপিং"
+  }
+};
 
 export default function Home({ lang = "en" }) {
   const [email, setEmail] = useState("");
@@ -14,59 +43,6 @@ export default function Home({ lang = "en" }) {
     setEmail("");
   };
 
-  // 🌐 MULTI LANGUAGE TEXT
-  const t = {
-    en: {
-      welcome: "Welcome",
-      company: "Monir and Sanzida Chemicals Works",
-      marquee: "Best Quality Chemicals | Fast Delivery | Big Discount Available Now",
-      explore: "Explore Products",
-      contact: "Contact Us",
-      shop: "Shop Now",
-      feature1: "10-Hour Protection",
-      feature2: "Research-Based Formula",
-      feature3: "Strict Quality Control",
-      feature4: "Safe When Used Properly"
-    },
-    bn: {
-      welcome: "স্বাগতম",
-      company: "মনির ও সানজিদা কেমিক্যালস ওয়ার্কস",
-      marquee: "সেরা মানের কেমিক্যাল | দ্রুত ডেলিভারি | বড় ডিসকাউন্ট চলছে",
-      explore: "পণ্য দেখুন",
-      contact: "যোগাযোগ করুন",
-      shop: "কিনুন",
-      feature1: "৮ ঘণ্টা সুরক্ষা",
-      feature2: "গবেষণাভিত্তিক ফর্মুলা",
-      feature3: "কঠোর মান নিয়ন্ত্রণ",
-      feature4: "সঠিক ব্যবহারে নিরাপদ"
-    },
-    jp: {
-      welcome: "ようこそ",
-      company: "モニール＆サンジダ化学工業",
-      marquee: "最高品質の化学製品 | 高速配送 | 大割引実施中",
-      explore: "製品を見る",
-      contact: "お問い合わせ",
-      shop: "購入する",
-      feature1: "高速システム",
-      feature2: "安全なログイン",
-      feature3: "製品アップロード",
-      feature4: "多言語"
-    },
-    cn: {
-      welcome: "欢迎",
-      company: "Monir 和 Sanzida 化工厂",
-      marquee: "高质量化学品 | 快速交付 | 大折扣进行中",
-      explore: "查看产品",
-      contact: "联系我们",
-      shop: "立即购买",
-      feature1: "快速系统",
-      feature2: "安全登录",
-      feature3: "产品上传",
-      feature4: "多语言"
-    }
-  };
-
-  // ✅ SAFE LANGUAGE FALLBACK
   const currentLang = t[lang] ? lang : "en";
   const langText = t[currentLang];
 
@@ -88,64 +64,59 @@ export default function Home({ lang = "en" }) {
     }
   ];
 
-  // ✅ FIXED useEffect (NO eslint error)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % banners.length);
     }, 4000);
 
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
-
       {/* 🔥 TOP BANNER */}
       <div className="top-banner">
         <div className="banner-box">
-
           <h2 className="typing">{langText.welcome}</h2>
-
           <p className="company-name">{langText.company}</p>
-
           <div className="marquee">
             <span>🔥 {langText.marquee}</span>
           </div>
-
           <div className="banner-buttons">
-            <button className="explore-btn" onClick={() => nav("/products")}>
+            <button
+              className="explore-btn"
+              onClick={() => nav("/products")}
+            >
               {langText.explore}
             </button>
-
-            <button className="contact-btn" onClick={() => nav("/contact")}>
+            <button
+              className="contact-btn"
+              onClick={() => nav("/contact")}
+            >
               {langText.contact}
             </button>
           </div>
-
         </div>
       </div>
 
       {/* 🔥 SLIDER */}
       <div className="slider">
-
         <div className="slider-overlay"></div>
-
         <img
           src={banners[index].img}
           className="slider-img"
           alt="banner"
         />
-
         <div className="slider-content">
           <h1>{banners[index].title}</h1>
           <p>{banners[index].desc}</p>
-
-          <button className="shop-btn" onClick={() => nav("/products")}>
+          <button
+            className="shop-btn"
+            onClick={() => nav("/products")}
+          >
             {langText.shop}
           </button>
         </div>
-
       </div>
 
       {/* FEATURES */}
@@ -158,9 +129,7 @@ export default function Home({ lang = "en" }) {
 
       {/* 🔥 FOOTER */}
       <footer className="home-footer">
-
         <div className="footer-grid">
-
           <div className="footer-col">
             <h2>🏢 {langText.company}</h2>
             <p>
@@ -168,7 +137,6 @@ export default function Home({ lang = "en" }) {
                 ? "আমরা উচ্চ মানের কেমিক্যাল সরবরাহ করি বিশ্বব্যাপী"
                 : "We provide high quality chemical products worldwide"}
             </p>
-
             <div className="social-icons">
               <span onClick={() => window.open("https://facebook.com", "_blank")}>📘</span>
               <span onClick={() => window.open("https://youtube.com", "_blank")}>▶️</span>
@@ -192,10 +160,11 @@ export default function Home({ lang = "en" }) {
             <p>Email: info@chemical.com</p>
             <p>Phone: +880123456789</p>
             <p>Location: Bangladesh</p>
-
             <button
               className="whatsapp-btn"
-              onClick={() => window.open("https://wa.me/8801854242461", "_blank")}
+              onClick={() =>
+                window.open("https://wa.me/8801854242461", "_blank")
+              }
             >
               💬 Chat on WhatsApp
             </button>
@@ -203,34 +172,28 @@ export default function Home({ lang = "en" }) {
 
           <div className="footer-col">
             <h3>📩 Newsletter</h3>
-
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
             />
-
             <button onClick={subscribe}>Subscribe</button>
-
             <p className="live-time">
               🕒 {new Date().toLocaleTimeString()}
             </p>
           </div>
-
         </div>
 
         <iframe
           className="footer-map"
-          src="https://maps.google.com/maps?q=bangladesh&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          src="https://www.google.com/maps?q=Bangladesh&output=embed"
           title="map"
         />
 
         <div className="footer-bottom-advanced">
           <p>© 2026 Chemical System | All Rights Reserved</p>
         </div>
-
       </footer>
-
     </div>
   );
 }

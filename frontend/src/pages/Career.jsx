@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import "../css/career.css";
 
 export default function Career() {
-
   // ======================
   // JOB DATA
   // ======================
@@ -11,14 +11,14 @@ export default function Career() {
       title: "Frontend Developer",
       location: "Remote",
       type: "Full Time",
-      skills: ["React", "CSS", "JS"]
+      skills: ["React", "CSS", "JavaScript"]
     },
     {
       id: 2,
       title: "Backend Engineer",
       location: "Dhaka",
       type: "Full Time",
-      skills: ["Node", "MongoDB", "API"]
+      skills: ["Node.js", "MongoDB", "REST API"]
     },
     {
       id: 3,
@@ -33,16 +33,12 @@ export default function Career() {
   // STATE
   // ======================
   const [search, setSearch] = useState("");
-
-  // ✅ FIX: resume kept but used safely to avoid ESLint error
   const [resume, setResume] = useState(null);
-
   const [form, setForm] = useState({
     name: "",
     email: "",
     position: ""
   });
-
   const [adminJob, setAdminJob] = useState({
     title: "",
     location: "",
@@ -52,7 +48,7 @@ export default function Career() {
   // ======================
   // FILTER JOBS
   // ======================
-  const filteredJobs = jobs.filter(job =>
+  const filteredJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -64,12 +60,12 @@ export default function Career() {
   };
 
   // ======================
-  // RESUME HANDLER (FIX: use state properly)
+  // RESUME HANDLER
   // ======================
   const handleResume = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      setResume(file); // now it's USED → no ESLint error
+      setResume(file);
     }
   };
 
@@ -93,85 +89,126 @@ export default function Career() {
       <div className="career-controls">
         <input
           placeholder="Search job..."
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
         />
       </div>
 
       {/* JOB LIST */}
       <div className="job-list">
-        {filteredJobs.map(job => (
-          <div className="job-card" key={job.id}>
-            <h3>{job.title}</h3>
-            <p>📍 {job.location}</p>
-            <p>⏳ {job.type}</p>
+        {filteredJobs.length === 0 ? (
+          <p>No jobs found matching "{search}"</p>
+        ) : (
+          filteredJobs.map((job) => (
+            <div className="job-card" key={job.id}>
+              <h3>{job.title}</h3>
+              <p>📍 {job.location} | ⏳ {job.type}</p>
 
-            <div>
-              {job.skills.map((s, i) => (
-                <span key={i}>{s} </span>
-              ))}
+              <div className="skills">
+                {job.skills.map((s, i) => (
+                  <span key={i}>{s}</span>
+                ))}
+              </div>
+
+              <button
+                className="apply-btn"
+                onClick={applyJob}
+              >
+                Apply
+              </button>
             </div>
-
-            <button onClick={applyJob}>Apply</button>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* AI MATCH */}
-      <div className="career-form">
+      <div className="career-form ai-match-form">
         <h2>🤖 AI Job Match</h2>
         <p>System will match your skills automatically (frontend demo)</p>
-        <button>Run AI Match</button>
+        <button className="btn-primary">Run AI Match</button>
       </div>
 
       {/* APPLY FORM */}
-      <div className="career-form">
+      <div className="career-form application-form">
         <h2>📝 Apply Now</h2>
 
         <input
           placeholder="Name"
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          value={form.name}
+          onChange={(e) =>
+            setForm({ ...form, name: e.target.value })
+          }
         />
 
         <input
           placeholder="Email"
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          value={form.email}
+          onChange={(e) =>
+            setForm({ ...form, email: e.target.value })
+          }
         />
 
         <input
           placeholder="Position"
-          onChange={(e) => setForm({ ...form, position: e.target.value })}
+          value={form.position}
+          onChange={(e) =>
+            setForm({ ...form, position: e.target.value })
+          }
         />
 
-        <input type="file" onChange={handleResume} />
+        <input
+          type="file"
+          accept=".pdf,.doc,.docx"
+          onChange={handleResume}
+        />
 
-        {/* optional debug usage to fully silence ESLint if needed */}
-        {resume && null}
+        {resume && (
+          <p className="resume-name">
+            Selected: {resume.name}
+          </p>
+        )}
 
-        <button onClick={applyJob}>
+        <button
+          className="btn-primary apply-btn"
+          onClick={applyJob}
+        >
           Submit Application
         </button>
       </div>
 
       {/* ADMIN PANEL */}
-      <div className="career-form">
+      <div className="career-form admin-job-form">
         <h2>🛠 Admin Job Panel</h2>
 
         <input
           placeholder="Job Title"
-          onChange={(e) => setAdminJob({ ...adminJob, title: e.target.value })}
+          value={adminJob.title}
+          onChange={(e) =>
+            setAdminJob({ ...adminJob, title: e.target.value })
+          }
         />
 
         <input
           placeholder="Location"
-          onChange={(e) => setAdminJob({ ...adminJob, location: e.target.value })}
+          value={adminJob.location}
+          onChange={(e) =>
+            setAdminJob({ ...adminJob, location: e.target.value })
+          }
         />
 
         <input
-          placeholder="Type"
-          onChange={(e) => setAdminJob({ ...adminJob, type: e.target.value })}
+          placeholder="Job Type (Full Time / Part Time / Contract)"
+          value={adminJob.type}
+          onChange={(e) =>
+            setAdminJob({ ...adminJob, type: e.target.value })
+          }
         />
 
-        <button onClick={postJob}>
+        <button
+          className="btn-primary"
+          onClick={postJob}
+        >
           Post Job
         </button>
       </div>

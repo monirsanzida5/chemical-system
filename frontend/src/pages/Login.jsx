@@ -1,21 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../css/login.css";
 
 export default function Login({ setUser }) {
   const nav = useNavigate();
-
 
   const login = async () => {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-
     if (!email || !password) {
       alert("Email & Password required");
       return;
     }
-
 
     const res = await fetch("http://localhost:5000/login", {
       method: "POST",
@@ -25,39 +22,57 @@ export default function Login({ setUser }) {
       body: JSON.stringify({ email, password })
     });
 
-
     const data = await res.json();
 
-
-    // 🔥 এটা খুব important
     alert(JSON.stringify(data));
-
 
     if (data.success) {
       localStorage.setItem("token", data.token);
-
-
-      // 👉 user set না করলে login হবে না
       setUser({ email });
-
-
       nav("/dashboard");
     } else {
       alert(data.message);
     }
   };
 
-
   return (
-    <div className="form">
-      <h2>Login</h2>
+    <div className="login-page">
 
+      <div className="login-box">
 
-      <input id="email" placeholder="Email" />
-      <input id="password" type="password" placeholder="Password" />
+        <h2>🔑 User Login</h2>
+        <p>Please sign in to your account</p>
 
+        <div className="form-row">
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            className="form-input"
+          />
+        </div>
 
-      <button onClick={login}>Login</button>
+        <div className="form-row">
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            className="form-input"
+            onKeyUp={(e) => e.key === "Enter" && login()}
+          />
+        </div>
+
+        <div className="submit-row">
+          <button
+            className="btn-primary full-width"
+            onClick={login}
+          >
+            Login
+          </button>
+        </div>
+
+      </div>
+
     </div>
   );
 }

@@ -1,0 +1,88 @@
+/* SIGNUP PAGE */
+
+/* PAGE */
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f6f9;
+  padding: 20px;
+}
+
+/* SIGNUP BOX */
+.signup-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.signup-box h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.signup-box p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* FORM ROW */
+.form-row {
+  margin-bottom: 15px;
+}
+
+/* INPUT */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
+}
+
+/* SUBMIT BUTTON */
+.submit-row {
+  margin-top: 15px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* DARK MODE SUPPORT (optional) */
+
+/* যদি dark mode থাকে (তোমার admin.css এ .dark) */
+.signup-page.dark {
+  background: #0f172a;
+}
+
+.signup-box.dark {
+  background: #1e293b;
+  color: white;
+  border: 1px solid #334155;
+}
+
+.signup-box.dark h2,
+.signup-box.dark p {
+  color: white;
+}
+
+.signup-box.dark .form-input {
+  background: #111827;
+  color: white;
+  border: 1px solid #334155;
+}
+
+/* এটা শেষ — এটা `signup.css` (Signup.jsx এর জন্য) */

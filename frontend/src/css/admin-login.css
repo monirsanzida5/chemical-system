@@ -1,0 +1,81 @@
+/* ADMIN LOGIN PANEL */
+
+/* MAIN PAGE */
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  padding: 20px;
+}
+
+/* LOGIN BOX */
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-box h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.login-box p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* INPUT */
+.login-box input.password-input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+}
+
+.login-box input.password-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
+}
+
+/* LOGIN BUTTON */
+.login-box .btn-primary {
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* DARK MODE SUPPORT (optional) */
+
+/* যদি dark mode থাকে তোমার app এ (admin.css থেকে .dark ক্লাস) */
+.admin-login-page .login-box.dark {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-login-page .login-box.dark h2 {
+  color: white;
+}
+
+.admin-login-page .login-box.dark p {
+  color: #cbd5e1;
+}
+
+.admin-login-page .login-box.dark input {
+  background: #111827;
+  color: white;
+  border: 1px solid #334155;
+}
+
+/* এটা শেষ — এটা `admin-login.css` (AdminLogin.jsx এর জন্য) */

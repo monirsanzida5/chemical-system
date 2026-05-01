@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
+import "../css/admin-login.css";
 export default function AdminLogin({ setAdmin }) {
   const [password, setPassword] = useState("");
   const nav = useNavigate();
-
 
   const handleLogin = () => {
     // 👉 demo password
@@ -17,23 +15,33 @@ export default function AdminLogin({ setAdmin }) {
     }
   };
 
-
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h2>Admin Login</h2>
+    <div className="admin-login-page">
 
+      <div className="login-box">
 
-      <input
-        type="password"
-        placeholder="Enter password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <h2>🔑 Admin Login</h2>
 
+        <p>Please enter your admin password</p>
 
-      <br /><br />
+        <input
+          type="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="password-input"
+          onKeyUp={(e) => e.key === "Enter" && handleLogin()}
+        />
 
+        <button
+          className="btn-primary login-btn"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
 
-      <button onClick={handleLogin}>Login</button>
+      </div>
+
     </div>
   );
 }

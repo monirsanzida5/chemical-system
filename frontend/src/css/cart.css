@@ -1,0 +1,204 @@
+/* CART PAGE STYLES */
+
+/* MAIN */
+.cart-page {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: #0f172a;
+  color: white;
+}
+
+/* TITLE */
+.cart-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* CART TABLE WRAPPER */
+.cart-table-wrapper {
+  margin-bottom: 20px;
+}
+
+/* CART TABLE */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.cart-table th {
+  background: #1e293b;
+  font-weight: bold;
+}
+
+.cart-table tr:hover {
+  background: #1e293b;
+}
+
+.cart-table thead th {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* TABLE TEXT */
+.text-sm {
+  font-size: 12px;
+  opacity: 0.8;
+  margin: 3px 0 0 0;
+}
+
+/* PRODUCT IMAGE */
+.cart-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* QUANTITY CONTROLS */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.qty-controls button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 16px;
+}
+
+.qty-controls button:hover {
+  background: #334155;
+}
+
+.qty-input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  background: #334155;
+  color: white;
+  font-weight: bold;
+}
+
+/* SUBTOTAL ROW */
+.cart-subtotal {
+  margin-top: 20px;
+  padding: 15px 0;
+  border-top: 1px solid #334155;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-subtotal span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* EMPTY CART */
+.empty-cart {
+  text-align: center;
+  padding: 40px;
+  color: #cbd5e1;
+}
+
+/* COUPON SECTION */
+.coupon-section {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.coupon-section label {
+  color: #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* GO TO SHOPPING + CHECKOUT BUTTONS */
+.cart-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* CHECKOUT BUTTON */
+.btn-cart-checkout {
+  padding: 12px 25px;
+  background: #00b894;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-cart-checkout:hover {
+  background: #019875;
+  transform: translateY(-2px);
+}
+
+/* GO BACK BUTTON */
+.btn-shop-more {
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-shop-more:hover {
+  background: #2563eb;
+}
+
+/* CART RESHUFFLE FOR MOBILE */
+@media (max-width: 768px) {
+  .cart-table {
+    font-size: 14px;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 8px;
+  }
+
+  .qty-controls {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .btn-cart-checkout {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  /* buttons stack */
+  .cart-actions {
+    flex-direction: column;
+  }
+}
+
+/* এটা শেষ — এটা `cart.css` (ই‑কমার্স লেভেল কার্ট পেজের CSS) */

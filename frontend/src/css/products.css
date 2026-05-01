@@ -1,0 +1,187 @@
+/* PRODUCTS PAGE STYLES */
+
+/* PAGE */
+.product-page {
+  padding: 20px;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* HERO */
+.product-hero {
+  text-align: center;
+  padding: 30px 20px;
+  color: #e2e8f0;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+/* STATUS */
+.product-page h3[style*="text-align:center"] {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #00ffd5;
+}
+
+/* SEARCH & FILTER CONTROLS */
+.product-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.product-controls input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 260px;
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.product-controls select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+/* PRODUCT GRID LAYOUT */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* PRODUCT CARD – MODERN */
+.product-card {
+  background: #1e293b;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  border: 1px solid #334155;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* IMAGE BOX */
+.product-img-box {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #111827;
+}
+
+.product-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.product-img-box img:hover {
+  transform: scale(1.1);
+}
+
+/* PRODUCT INFO */
+.product-info {
+  padding: 15px;
+  text-align: center;
+  color: #e2e8f0;
+}
+
+/* CATEGORY TAG (GREEN / 1st CARD) */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin: 5px 0;
+  background: #00b894;
+  color: white;
+}
+
+/* PRICE TEXT */
+.product-info p {
+  margin: 10px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* BUY BUTTON */
+.product-info button:first-child {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #00b894, #019875);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.product-info button:first-child:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* WISHLIST BUTTON */
+.product-info button:nth-child(2) {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+/* WISHLIST BUTTON – STATES */
+.product-info button:nth-child(2)[style*="background:red"] {
+  background: #ef4444;
+}
+
+.product-info button:nth-child(2)[style*="background:#444"] {
+  background: #444;
+}
+
+.product-info button:nth-child(2):hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .product-controls {
+    justify-content: stretch;
+    gap: 8px;
+  }
+
+  .product-controls input {
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* এটা শেষ — এটা `products.css` (প্রোডাক্ট পেজের আলাদা CSS) */

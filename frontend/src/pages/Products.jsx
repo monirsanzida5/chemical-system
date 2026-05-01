@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/products.css";
 
-// ✅ NEW (ADD)
+// ✅ custom hook (নতুন করে দিয়েছি)
 import useTranslate from "../hooks/useTranslate";
 
 // 🔥 IMPORTANT: allProducts বাইরে নিতে হবে
@@ -37,13 +38,13 @@ export const allProducts = [
 ];
 
 export default function Products({ lang = "en", cart, setCart }) {
-
   const nav = useNavigate();
 
-  // ✅ NEW (ADD)
+  // ✅ এখন useTranslate সঠিকভাবে React hook হিসেবে কাজ করবে
   const tData = useTranslate(lang);
 
-  const text = {
+  // 🌍 local fallback text (যদি JSON না থাকে বা import fail করে)
+  const localText = {
     en: {
       title: "Our Products",
       search: "Search product...",
@@ -78,11 +79,11 @@ export default function Products({ lang = "en", cart, setCart }) {
     }
   };
 
-  // ✅ STRONG FIX (multi fallback)
+  // ✅ প্রথমে hook‑এর data, না থাকলে locale object
   const tFinal =
     (tData && tData.title && tData) ||
-    text[lang] ||
-    text["en"];
+    localText[lang] ||
+    localText["en"];
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
@@ -90,12 +91,12 @@ export default function Products({ lang = "en", cart, setCart }) {
 
   // 🛒 ADD TO CART
   const addToCart = (product) => {
-    const exists = cart.find(item => item.id === product.id);
+    const exists = cart.find((item) => item.id === product.id);
 
     if (exists) {
-      const updated = cart.map(item =>
+      const updated = cart.map((item) =>
         item.id === product.id
-          ? { ...item, qty: (item.qty || 1) + 1 } // ✅ FIX
+          ? { ...item, qty: (item.qty || 1) + 1 }
           : item
       );
       setCart(updated);
@@ -108,10 +109,10 @@ export default function Products({ lang = "en", cart, setCart }) {
 
   // ❤️ WISHLIST
   const toggleWishlist = (product) => {
-    const exists = wishlist.find(p => p.id === product.id);
+    const exists = wishlist.find((p) => p.id === product.id);
 
     if (exists) {
-      setWishlist(wishlist.filter(p => p.id !== product.id));
+      setWishlist(wishlist.filter((p) => p.id !== product.id));
     } else {
       setWishlist([...wishlist, product]);
     }
@@ -125,7 +126,6 @@ export default function Products({ lang = "en", cart, setCart }) {
 
   return (
     <div className="product-page">
-
       {/* HERO */}
       <div className="product-hero">
         <h1>{tFinal.title}</h1>
@@ -139,7 +139,6 @@ export default function Products({ lang = "en", cart, setCart }) {
 
       {/* CONTROLS */}
       <div className="product-controls">
-
         <input
           placeholder={tFinal.search}
           onChange={(e) => setSearch(e.target.value)}
@@ -151,36 +150,27 @@ export default function Products({ lang = "en", cart, setCart }) {
           <option value="Powder">Powder</option>
           <option value="Gas">Gas</option>
         </select>
-
       </div>
 
       {/* PRODUCTS */}
       <div className="product-grid">
-
         {filtered.map((p) => {
-
-          const liked = wishlist.find(w => w.id === p.id);
+          const liked = wishlist.find((w) => w.id === p.id);
 
           return (
             <div className="product-card" key={p.id}>
-
               <div className="product-img-box">
                 <img
                   src={p.img}
-                  alt={p.name} // ✅ FIX (accessibility)
-                  onClick={() =>
-                    nav(`/product/${p.id}`, { state: p })
-                  }
+                  alt={p.name}
+                  onClick={() => nav(`/product/${p.id}`, { state: p })}
                   style={{ cursor: "pointer" }}
                 />
               </div>
 
               <div className="product-info">
-
                 <h3>{p.name}</h3>
-
                 <span className="tag">{p.category}</span>
-
                 <p>💰 {tFinal.price}: ${p.price}</p>
 
                 <button onClick={() => addToCart(p)}>
@@ -196,13 +186,10 @@ export default function Products({ lang = "en", cart, setCart }) {
                 >
                   ❤️ {tFinal.wishlist}
                 </button>
-
               </div>
-
             </div>
           );
         })}
-
       </div>
     </div>
   );
