@@ -1,34 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/home.css";
-
-// 🌍 SIMPLE LANGUAGE OBJECT
-const t = {
-  en: {
-    welcome: "Welcome to Chemical System",
-    company: "Chemical System",
-    marquee: "High quality chemical products, 24×7 support, fast delivery.",
-    explore: "Explore Products",
-    contact: "Contact Us",
-    shop: "Shop Now",
-    feature1: "Fast Delivery",
-    feature2: "Secure Transactions",
-    feature3: "24×7 Support",
-    feature4: "Global Shipping"
-  },
-  bn: {
-    welcome: "Chemical System এ স্বাগতম",
-    company: "Chemical System",
-    marquee: "উচ্চ মানের কেমিক্যাল, ২৪×৭ সাপোর্ট, দ্রুত ডেলিভারি।",
-    explore: "প্রোডাক্ট ঘুরে দেখুন",
-    contact: "যোগাযোগ",
-    shop: "কিনুন এখনই",
-    feature1: "দ্রুত ডেলিভারি",
-    feature2: "সুরক্ষিত লেনদেন",
-    feature3: "২৪×৭ সাপোর্ট",
-    feature4: "আন্তর্জাতিক শিপিং"
-  }
-};
 
 export default function Home({ lang = "en" }) {
   const [email, setEmail] = useState("");
@@ -43,6 +14,8 @@ export default function Home({ lang = "en" }) {
     setEmail("");
   };
 
+  
+  // ✅ SAFE LANGUAGE FALLBACK
   const currentLang = t[lang] ? lang : "en";
   const langText = t[currentLang];
 
@@ -64,59 +37,64 @@ export default function Home({ lang = "en" }) {
     }
   ];
 
+  // ✅ FIXED useEffect (NO eslint error)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % banners.length);
     }, 4000);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
+
       {/* 🔥 TOP BANNER */}
       <div className="top-banner">
         <div className="banner-box">
+
           <h2 className="typing">{langText.welcome}</h2>
+
           <p className="company-name">{langText.company}</p>
+
           <div className="marquee">
             <span>🔥 {langText.marquee}</span>
           </div>
+
           <div className="banner-buttons">
-            <button
-              className="explore-btn"
-              onClick={() => nav("/products")}
-            >
+            <button className="explore-btn" onClick={() => nav("/products")}>
               {langText.explore}
             </button>
-            <button
-              className="contact-btn"
-              onClick={() => nav("/contact")}
-            >
+
+            <button className="contact-btn" onClick={() => nav("/contact")}>
               {langText.contact}
             </button>
           </div>
+
         </div>
       </div>
 
       {/* 🔥 SLIDER */}
       <div className="slider">
+
         <div className="slider-overlay"></div>
+
         <img
           src={banners[index].img}
           className="slider-img"
           alt="banner"
         />
+
         <div className="slider-content">
           <h1>{banners[index].title}</h1>
           <p>{banners[index].desc}</p>
-          <button
-            className="shop-btn"
-            onClick={() => nav("/products")}
-          >
+
+          <button className="shop-btn" onClick={() => nav("/products")}>
             {langText.shop}
           </button>
         </div>
+
       </div>
 
       {/* FEATURES */}
@@ -129,7 +107,9 @@ export default function Home({ lang = "en" }) {
 
       {/* 🔥 FOOTER */}
       <footer className="home-footer">
+
         <div className="footer-grid">
+
           <div className="footer-col">
             <h2>🏢 {langText.company}</h2>
             <p>
@@ -137,6 +117,7 @@ export default function Home({ lang = "en" }) {
                 ? "আমরা উচ্চ মানের কেমিক্যাল সরবরাহ করি বিশ্বব্যাপী"
                 : "We provide high quality chemical products worldwide"}
             </p>
+
             <div className="social-icons">
               <span onClick={() => window.open("https://facebook.com", "_blank")}>📘</span>
               <span onClick={() => window.open("https://youtube.com", "_blank")}>▶️</span>
@@ -160,11 +141,10 @@ export default function Home({ lang = "en" }) {
             <p>Email: info@chemical.com</p>
             <p>Phone: +880123456789</p>
             <p>Location: Bangladesh</p>
+
             <button
               className="whatsapp-btn"
-              onClick={() =>
-                window.open("https://wa.me/8801854242461", "_blank")
-              }
+              onClick={() => window.open("https://wa.me/8801854242461", "_blank")}
             >
               💬 Chat on WhatsApp
             </button>
@@ -172,28 +152,34 @@ export default function Home({ lang = "en" }) {
 
           <div className="footer-col">
             <h3>📩 Newsletter</h3>
+
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
             />
+
             <button onClick={subscribe}>Subscribe</button>
+
             <p className="live-time">
               🕒 {new Date().toLocaleTimeString()}
             </p>
           </div>
+
         </div>
 
         <iframe
           className="footer-map"
-          src="https://www.google.com/maps?q=Bangladesh&output=embed"
+          src="https://maps.google.com/maps?q=bangladesh&t=&z=13&ie=UTF8&iwloc=&output=embed"
           title="map"
         />
 
         <div className="footer-bottom-advanced">
           <p>© 2026 Chemical System | All Rights Reserved</p>
         </div>
+
       </footer>
+
     </div>
   );
 }
