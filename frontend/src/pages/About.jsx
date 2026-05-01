@@ -121,7 +121,7 @@ export default function About({ lang = "en" }) {
           />
 
           <iframe
-            src="https://www.youtube.com/embed/m5MnxgU8pnM"
+            src="https://www.youtube.com/embed/iRNl0iWE490"
             title={t["intro"] + " - 3"}
             allowFullScreen
           />
@@ -135,7 +135,7 @@ export default function About({ lang = "en" }) {
         <div className="team-grid-premium">
           <div className="team-card hover-card">
             <img
-              src="https://via.placeholder.com/150"
+              src="/images/ceo.jpg"
               alt="CEO"
               loading="lazy"
             />
@@ -144,7 +144,7 @@ export default function About({ lang = "en" }) {
 
           <div className="team-card hover-card">
             <img
-              src="https://via.placeholder.com/150"
+              src="/images/engineer.jpg"
               alt="Engineer"
               loading="lazy"
             />
