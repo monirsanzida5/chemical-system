@@ -46,7 +46,7 @@ body {
 .typing {
   font-size: 28px;
   font-weight: bold;
-  border-right: 3px solid rgb(255, 255, 255);
+  border-right: 3px solid white;
   white-space: nowrap;
   overflow: hidden;
   width: 0;
@@ -125,26 +125,54 @@ body {
   color: black;
 }
 
-/* FEATURE CARDS */
+/* 4 CARD – CHEMICAL FEATURES */
 .feature-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding: 20px;
+  gap: 20px;
+  padding: 20px 15px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .feature-card {
   background: linear-gradient(135deg, #00b894, #019875);
   color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
-  transition: 0.3s;
-  cursor: default;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.25);
 }
 
 .feature-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+}
+
+/* RESPONSIVE – 4 CARD GRID */
+@media (max-width: 1024px) {
+  .feature-container {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .feature-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .feature-card {
+    padding: 18px 14px;
+  }
 }
 
 /* PRODUCTS SECTION ON HOME (GRID) */
@@ -264,18 +292,374 @@ body {
   }
 }
 
+/* Tata Mosquito Coil – ব্যানারের নিচে */
+.home-feature-section {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 20px;
+  margin: 30px 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Tata feature – container */
+.feature-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* LEFT COLUMN – লেখা সহ বাম পাশ */
+.col-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ANIMATION – বাম */
+.col-left.fade-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+/* LOGO GROUP */
+.logo-tag-wrap {
+  margin-bottom: 20px;
+}
+
+.tata-logo-box {
+  display: inline-flex;
+  flex-direction: column;
+  background: #00ffd5;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 255, 213, 0.35);
+}
+
+.tata-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+.tata-sub {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* TAG */
+.hero-tag {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #00ffd5;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  background: rgba(0, 255, 213, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* HEADLINE */
+.headline {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 14px 0 10px 0;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+/* SUBHEAD + BODY TEXT */
+.sub-head {
+  font-size: 15px;
+  font-weight: 500;
+  color: #a0aec0;
+  margin-bottom: 14px;
+}
+
+.body-text {
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* FEATURES LIST */
+.features-list {
+  margin-top: 10px;
+}
+
+/* feature-item – একটা লাইন */
+.feature-item {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0;
+  align-items: flex-start;
+}
+
+/* ছোট আইকন বক্স */
+.feature-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0, 255, 213, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 255, 213, 0.2);
+  flex-shrink: 0;
+}
+
+/* feature-text – দুই লাইন */
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.feature-title {
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 2px;
+}
+
+.feature-desc {
+  color: #a0aec0;
+}
+
+/* RIGHT COLUMN – IMAGE */
+.col-right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* ANIMATION – ডান */
+.col-right.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+/* IMAGE CARD */
+.image-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 50px rgba(0, 255, 213, 0.15),
+    0 6px 18px rgba(0, 0, 0, 0.4);
+  border: 1px solid #334155;
+  background: #111827;
+}
+
+.card-container {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.card-container img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.card-container img:hover {
+  transform: scale(1.04);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* SMOKE / GLOW এফেক্ট */
+.col-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 70% 20%,
+    rgba(0, 255, 213, 0.15) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* RESPONSIVE – Tata Coil section */
 @media (max-width: 768px) {
+  .home-feature-section {
+    padding: 40px 20px;
+    margin: 20px 0;
+  }
+
   .feature-container {
-    grid-template-columns: repeat(2, 1fr);
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
   }
 
-  .product-container {
-    grid-template-columns: 1fr;
+  .col-left,
+  .col-right {
+    width: 100%;
   }
 
-  .marquee span {
-    animation: scrollText 8s linear infinite;
+  .headline {
+    font-size: 20px;
+  }
+
+  .card-container {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .col-left.fade-in-left,
+  .col-right.fade-in-right {
+    transform: none;
   }
 }
 
-/* এটা শেষ — এটা `home.css` (হোম পেজের স্টাইল) */
+/* ANIMATION KEYFRAMES */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Why Choose TATA – 4 CARD */
+/* TATA FEATURES SECTION */
+.tata-features-section {
+  padding: 60px 20px;
+  margin: 40px 0 20px 0;
+  background: linear-gradient(135deg, #00334d 0%, #0a2139 100%);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+/* HEADING */
+.tata-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.tata-heading h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #00ffd5;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.tata-heading p {
+  font-size: 15px;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* 4 CARD GRID */
+.tata-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* SINGLE TATA CARD */
+.tata-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 213, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+}
+
+.tata-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 255, 213, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ICON */
+.tata-card-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 255, 213, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 255, 213, 0.25);
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+/* CARD TITLE */
+.tata-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+/* CARD DESCRIPTION */
+.tata-card p {
+  font-size: 13px;
+  color: #a0aec0;
+  line-height: 1.55;
+}
+
+/* RESPONSIVE – 4 CARD GRID */
+@media (max-width: 1024px) {
+  .tata-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .tata-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tata-features-section {
+    padding: 40px 15px;
+  }
+
+  .tata-heading h2 {
+    font-size: 22px;
+  }
+}

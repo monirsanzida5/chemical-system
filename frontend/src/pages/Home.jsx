@@ -21,7 +21,7 @@ const t = {
     company: "Monir & Sanzida Chemicals Works",
     marquee: "উচ্চ মানের কেমিক্যাল, ২৪×৭ সাপোর্ট, দ্রুত ডেলিভারি।",
     explore: "প্রোডাক্ট ঘুরে দেখুন",
-    contact: "যোগাযোগ",
+    contact: "যোগায়োগ",
     shop: "কিনুন এখনই",
     feature1: "দ্রুত ডেলিভারি",
     feature2: "সুরক্ষিত লেনদেন",
@@ -65,12 +65,12 @@ export default function Home({ lang = "en" }) {
   ];
 
   useEffect(() => {
-  const interval = setInterval(() => {
-    setIndex((prev) => (prev + 1) % banners.length);
-  }, 4000);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % banners.length);
+    }, 4000);
 
-  return () => clearInterval(interval);
-}, [banners.length]);
+    return () => clearInterval(interval);
+  }, [banners.length]);
 
   return (
     <div>
@@ -119,12 +119,202 @@ export default function Home({ lang = "en" }) {
         </div>
       </div>
 
-      {/* FEATURES */}
+      {/* BRAND FEATURE – ব্যানারের নিচে Tata Coil */}
+      <div className="home-feature-section">
+        <div className="feature-container">
+          {/* LEFT COLUMN – লেখা + লোগো */}
+          <div className="col-left fade-in-left">
+            <div className="logo-tag-wrap">
+              <div className="tata-logo-box">
+                <span className="tata-logo">TATA</span>
+                <span className="tata-sub">Mosquito Coil</span>
+              </div>
+              <div className="hero-tag">
+                A Trusted Mosquito Coil in Bangladesh
+              </div>
+            </div>
+
+            <h1 className="headline">
+              Sleep Peacefully. Wake Refreshed.
+            </h1>
+
+            <p className="sub-head">
+              Up to 8 Hours of Continuous Protection
+            </p>
+
+            <p className="body-text">
+              One coil for the whole night. Dependable quality, made with care for your family.
+            </p>
+
+            <div className="features-list">
+              {/* 8 HOURS – ঘড়ি আইকন */}
+              <div className="feature-item">
+                <span className="feature-icon clock">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon-clock"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="12" y1="7" x2="12" y2="12" />
+                    <line x1="12" y1="12" x2="15" y2="12" />
+                  </svg>
+                </span>
+                <div className="feature-text">
+                  <span className="feature-title">8 Hours</span>
+                  <span className="feature-desc">
+                    All‑night coverage for worry‑free sleep
+                  </span>
+                </div>
+              </div>
+
+              {/* Advanced Formula – leaf আইকন */}
+              <div className="feature-item">
+                <span className="feature-icon leaf">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon-leaf"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  >
+                    <path
+                      d="M12 2C8.5 2 6 4.5 6 8c0 3.5 2.5 6 6 6 3.5 0 6-2.5 6-6 0-3.5-2.5-6-6-6z M12 4v4 M12 10v4"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+                <div className="feature-text">
+                  <span className="feature-title">Advanced Formula</span>
+                  <span className="feature-desc">
+                    Effective against common mosquitoes
+                  </span>
+                </div>
+              </div>
+
+              {/* Safe for Daily Use – shield আইকন */}
+              <div className="feature-item">
+                <span className="feature-icon shield">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon-shield"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  >
+                    <path
+                      d="M12 2l-8 3.2v6.5c0 6 6 10 8 10 2 0 8-4 8-10V5.2l-8-3.2z"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <div className="feature-text">
+                  <span className="feature-title">Safe for Daily Use</span>
+                  <span className="feature-desc">
+                    When used as directed
+                  </span>
+                </div>
+              </div>
+
+              {/* Trusted Quality – star আইকন */}
+              <div className="feature-item">
+                <span className="feature-icon star">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="icon-star"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    height="14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                  >
+                    <polygon points="12,2 15,8.5 22,9 16.5,13.5 18,20 12,16.5 6,20 7.5,13.5 2,9 9,8.5" />
+                  </svg>
+                </span>
+                <div className="feature-text">
+                  <span className="feature-title">Trusted Quality</span>
+                  <span className="feature-desc">
+                    Consistent performance in every pack
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN – ছবির কার্ড */}
+          <div className="col-right fade-in-right">
+            <div className="image-card">
+              <div className="card-container">
+                <img
+                  src="/images/coil-family.jpg"
+                  alt="Family with Tata mosquito coil burning"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CHEMICAL FEATURES – 4 CARD পাশাপাশি */}
       <div className="feature-container">
         <div className="feature-card">⚡ {langText.feature1}</div>
         <div className="feature-card">🔐 {langText.feature2}</div>
         <div className="feature-card">📦 {langText.feature3}</div>
         <div className="feature-card">🌐 {langText.feature4}</div>
+      </div>
+
+      {/* WHY CHOOSE TATA – 4 CARD */}
+      <div className="tata-features-section">
+        <div className="tata-heading">
+          <h2>Why Choose TATA</h2>
+          <p>Quality that makes a real difference</p>
+        </div>
+
+        <div className="tata-cards-grid">
+          {/* CARD 1 – 10-Hour Protection */}
+          <div className="tata-card">
+            <div className="tata-card-icon clock-icon">🕐</div>
+            <h3>10-Hour Protection</h3>
+            <p>Slow‑burn technology designed to provide consistent overnight coverage.</p>
+          </div>
+
+          {/* CARD 2 – Research-Based Formula */}
+          <div className="tata-card">
+            <div className="tata-card-icon flask-icon">🧪</div>
+            <h3>Research‑Based Formula</h3>
+            <p>
+              Effective against dengue and malaria‑carrying mosquitoes, as well as common household mosquitoes.
+            </p>
+          </div>
+
+          {/* CARD 3 – Strict Quality Control */}
+          <div className="tata-card">
+            <div className="tata-card-icon quality-icon">✅</div>
+            <h3>Strict Quality Control</h3>
+            <p>Each batch is carefully tested. We never compromise on quality.</p>
+          </div>
+
+          {/* CARD 4 – Safe When Used Properly */}
+          <div className="tata-card">
+            <div className="tata-card-icon safety-icon">🛡️</div>
+            <h3>Safe When Used Properly</h3>
+            <p>Made with approved ingredients and clear usage instructions on every pack.</p>
+          </div>
+        </div>
       </div>
 
       {/* 🔥 FOOTER */}
@@ -138,10 +328,26 @@ export default function Home({ lang = "en" }) {
                 : "We provide high quality chemical products worldwide"}
             </p>
             <div className="social-icons">
-              <span onClick={() => window.open("https://facebook.com", "_blank")}>📘</span>
-              <span onClick={() => window.open("https://youtube.com", "_blank")}>▶️</span>
-              <span onClick={() => window.open("https://twitter.com", "_blank")}>🐦</span>
-              <span onClick={() => window.open("https://google.com", "_blank")}>🌍</span>
+              <span
+                onClick={() => window.open("https://facebook.com", "_blank")}
+              >
+                📘
+              </span>
+              <span
+                onClick={() => window.open("https://youtube.com", "_blank")}
+              >
+                ▶️
+              </span>
+              <span
+                onClick={() => window.open("https://twitter.com", "_blank")}
+              >
+                🐦
+              </span>
+              <span
+                onClick={() => window.open("https://google.com", "_blank")}
+              >
+                🌍
+              </span>
             </div>
           </div>
 
