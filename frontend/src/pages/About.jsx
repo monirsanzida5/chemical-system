@@ -153,7 +153,7 @@ export default function About({ lang = "en" }) {
 
           <div className="team-card hover-card">
             <img
-              src="https://via.placeholder.com/150"
+              src="/images/ceo.jpg"
               alt="Marketing"
               loading="lazy"
             />
