@@ -85,6 +85,7 @@ export default function Career() {
         <p>Find Jobs | Apply | Upload Resume | AI Match</p>
       </div>
 
+
       {/* SEARCH */}
       <div className="career-controls">
         <input
@@ -128,6 +129,7 @@ export default function Career() {
         <p>System will match your skills automatically (frontend demo)</p>
         <button className="btn-primary">Run AI Match</button>
       </div>
+      
 
       {/* APPLY FORM */}
       <div className="career-form application-form">

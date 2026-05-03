@@ -68,6 +68,12 @@ export default function About({ lang = "en" }) {
         <p>{t.desc}</p>
       </div>
 
+      {/* ভাষা সুইচ */}
+<div
+  id="google_translate_element"
+  style={{ padding: "10px 0", textAlign: "center" }}
+></div>
+
       {/* MISSION / VISION */}
       <div className="grid-2">
         <div className="glass-card-premium">

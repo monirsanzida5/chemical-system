@@ -82,6 +82,7 @@ export default function Home({ lang = "en" }) {
           <div className="marquee">
             <span>🔥 {langText.marquee}</span>
           </div>
+          
           <div className="banner-buttons">
             <button
               className="explore-btn"
@@ -98,6 +99,7 @@ export default function Home({ lang = "en" }) {
           </div>
         </div>
       </div>
+      
 
       {/* 🔥 SLIDER */}
       <div className="slider">
