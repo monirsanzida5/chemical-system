@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/home.css";
 
-// 🌍 SIMPLE LANGUAGE OBJECT
+// 🌍 সব টেক্সট এখানে (Google‑friendly)
 const t = {
   en: {
     welcome: "Welcome to Chemical System",
@@ -14,19 +14,89 @@ const t = {
     feature1: "Fast Delivery",
     feature2: "Secure Transactions",
     feature3: "24×7 Support",
-    feature4: "Global Shipping"
+    feature4: "Global Shipping",
+    tata_headline: "Sleep Peacefully. Wake Refreshed.",
+    tata_subhead: "Up to 8 Hours of Continuous Protection",
+    tata_body: "One coil for the whole night. Dependable quality, made with care for your family.",
+    tata_8hours: "8 Hours",
+    tata_8desc: "All‑night coverage for worry‑free sleep",
+    tata_formula: "Advanced Formula",
+    tata_formuladesc: "Effective against common mosquitoes",
+    tata_safe: "Safe for Daily Use",
+    tata_safedesc: "When used as directed",
+    tata_quality: "Trusted Quality",
+    tata_qualitydesc: "Consistent performance in every pack",
+    why_choose: "Why Choose TATA",
+    why_body: "Quality that makes a real difference",
+    card1_title: "10-Hour Protection",
+    card1_desc: "Slow‑burn technology designed to provide consistent overnight coverage.",
+    card2_title: "Research‑Based Formula",
+    card2_desc: "Effective against dengue and malaria‑carrying mosquitoes, as well as common household mosquitoes.",
+    card3_title: "Strict Quality Control",
+    card3_desc: "Each batch is carefully tested. We never compromise on quality.",
+    card4_title: "Safe When Used Properly",
+    card4_desc: "Made with approved ingredients and clear usage instructions on every pack.",
+    footer_about: "We provide high quality chemical products worldwide",
+    footer_links: "🔗 Links",
+    home: "Home",
+    products: "Products",
+    services: "Services",
+    footer_contact: "📞 Contact",
+    footer_email_label: "Email",
+    footer_phone_label: "Phone",
+    footer_location_label: "Location",
+    footer_whatsapp_button: "💬 Chat on WhatsApp",
+    footer_newsletter_title: "📩 Newsletter",
+    footer_email_placeholder: "Enter your email",
+    footer_subscribe_button: "Subscribe",
+    footer_copyright: "© 2026 Chemical System | All Rights Reserved"
   },
   bn: {
     welcome: "Chemical System এ স্বাগতম",
     company: "Monir & Sanzida Chemicals Works",
     marquee: "উচ্চ মানের কেমিক্যাল, ২৪×৭ সাপোর্ট, দ্রুত ডেলিভারি।",
     explore: "প্রোডাক্ট ঘুরে দেখুন",
-    contact: "যোগায়োগ",
+    contact: "যোগাযোগ",
     shop: "কিনুন এখনই",
     feature1: "দ্রুত ডেলিভারি",
     feature2: "সুরক্ষিত লেনদেন",
     feature3: "২৪×৭ সাপোর্ট",
-    feature4: "আন্তর্জাতিক শিপিং"
+    feature4: "আন্তর্জাতিক শিপিং",
+    tata_headline: "শান্তিতে ঘুমান, প্রাণবন্ত হয়ে জাগুন।",
+    tata_subhead: "৮ ঘণ্টা পর্যন্ত অব্যাহত সুরক্ষা",
+    tata_body: "সারারাতের জন্য একটি কয়েল। নির্ভরযোগ্য মান, যা আপনার পরিবারের জন্য তৈরি।",
+    tata_8hours: "৮ ঘণ্টা",
+    tata_8desc: "চিন্তামুক্ত ঘুমের জন্য সারারাতের কভারেজ",
+    tata_formula: "উন্নত ফর্মূলা",
+    tata_formuladesc: "সাধারণ মশার বিরুদ্ধে কার্যকরী",
+    tata_safe: "প্রতিদিন নিরাপদে ব্যবহার",
+    tata_safedesc: "নির্দেশ অনুযায়ী ব্যবহার করুন",
+    tata_quality: "বিশ্বস্ত মান",
+    tata_qualitydesc: "প্রতিটি প্যাকে অপরিবর্তিত কর্মক্ষমতা",
+    why_choose: "কেন TATA বেছে নেবেন",
+    why_body: "যে মান আসল পার্থক্য তৈরি করে",
+    card1_title: "১০ ঘণ্টার সুরক্ষা",
+    card1_desc: "ধীরে পোড়ানো প্রযুক্তি, যা সারারাতের জন্য সঙ্গতিপূর্ণ কভারেজ দেয়।",
+    card2_title: "গবেষণা‑ভিত্তিক ফর্মূলা",
+    card2_desc: "ডেঙ্গু ও ম্যালেরিয়া‑বাহী মশা এবং সাধারণ ঘরের মশার বিরুদ্ধে কার্যকরী।",
+    card3_title: "কঠোর গুণগত নিয়ন্ত্রণ",
+    card3_desc: "প্রতিটি ব্যাচ নিয়মিত পরীক্ষা করা হয়। আমরা কখনোই মানের সঙ্গে আপোষ করি না।",
+    card4_title: "সঠিকভাবে ব্যবহার করলে নিরাপদ",
+    card4_desc: "অনুমোদিত উপাদান দিয়ে তৈরি এবং প্রতিটি প্যাকে স্পষ্ট ব্যবহার নির্দেশিকা।",
+    footer_about: "আমরা বিশ্বব্যাপী উচ্চ মানের কেমিক্যাল সরবরাহ করি",
+    footer_links: "🔗 লিংক",
+    home: "হোম",
+    products: "প্রোডাক্ট",
+    services: "সার্ভিস",
+    footer_contact: "📞 যোগাযোগ",
+    footer_email_label: "ইমেইল",
+    footer_phone_label: "ফোন",
+    footer_location_label: "অবস্থান",
+    footer_whatsapp_button: "💬 WhatsApp‑এ চ্যাট করুন",
+    footer_newsletter_title: "📩 নিউজলেটার",
+    footer_email_placeholder: "আপনার ইমেইল লিখুন",
+    footer_subscribe_button: "সাবস্ক্রাইব",
+    footer_copyright: "© ২০২৬ কেমিক্যাল সিস্টেম | সর্বস্বত্ব সংরক্ষিত"
   }
 };
 
@@ -74,6 +144,12 @@ export default function Home({ lang = "en" }) {
 
   return (
     <div>
+      {/* 🌍 Google Translate – UI না, কাজ করবে */}
+      <div
+        id="google_translate_element"
+        style={{ padding: "10px 0", textAlign: "center", display: "none" }}
+      ></div>
+
       {/* 🔥 TOP BANNER */}
       <div className="top-banner">
         <div className="banner-box">
@@ -121,7 +197,7 @@ export default function Home({ lang = "en" }) {
         </div>
       </div>
 
-      {/* BRAND FEATURE – ব্যানারের নিচে Tata Coil */}
+      {/* BRAND FEATURE – Tata Mosquito Coil */}
       <div className="home-feature-section">
         <div className="feature-container">
           {/* LEFT COLUMN – লেখা + লোগো */}
@@ -137,15 +213,15 @@ export default function Home({ lang = "en" }) {
             </div>
 
             <h1 className="headline">
-              Sleep Peacefully. Wake Refreshed.
+              {langText.tata_headline}
             </h1>
 
             <p className="sub-head">
-              Up to 8 Hours of Continuous Protection
+              {langText.tata_subhead}
             </p>
 
             <p className="body-text">
-              One coil for the whole night. Dependable quality, made with care for your family.
+              {langText.tata_body}
             </p>
 
             <div className="features-list">
@@ -168,10 +244,8 @@ export default function Home({ lang = "en" }) {
                   </svg>
                 </span>
                 <div className="feature-text">
-                  <span className="feature-title">8 Hours</span>
-                  <span className="feature-desc">
-                    All‑night coverage for worry‑free sleep
-                  </span>
+                  <span className="feature-title">{langText.tata_8hours}</span>
+                  <span className="feature-desc">{langText.tata_8desc}</span>
                 </div>
               </div>
 
@@ -195,10 +269,8 @@ export default function Home({ lang = "en" }) {
                   </svg>
                 </span>
                 <div className="feature-text">
-                  <span className="feature-title">Advanced Formula</span>
-                  <span className="feature-desc">
-                    Effective against common mosquitoes
-                  </span>
+                  <span className="feature-title">{langText.tata_formula}</span>
+                  <span className="feature-desc">{langText.tata_formuladesc}</span>
                 </div>
               </div>
 
@@ -223,10 +295,8 @@ export default function Home({ lang = "en" }) {
                   </svg>
                 </span>
                 <div className="feature-text">
-                  <span className="feature-title">Safe for Daily Use</span>
-                  <span className="feature-desc">
-                    When used as directed
-                  </span>
+                  <span className="feature-title">{langText.tata_safe}</span>
+                  <span className="feature-desc">{langText.tata_safedesc}</span>
                 </div>
               </div>
 
@@ -247,10 +317,8 @@ export default function Home({ lang = "en" }) {
                   </svg>
                 </span>
                 <div className="feature-text">
-                  <span className="feature-title">Trusted Quality</span>
-                  <span className="feature-desc">
-                    Consistent performance in every pack
-                  </span>
+                  <span className="feature-title">{langText.tata_quality}</span>
+                  <span className="feature-desc">{langText.tata_qualitydesc}</span>
                 </div>
               </div>
             </div>
@@ -282,39 +350,37 @@ export default function Home({ lang = "en" }) {
       {/* WHY CHOOSE TATA – 4 CARD */}
       <div className="tata-features-section">
         <div className="tata-heading">
-          <h2>Why Choose TATA</h2>
-          <p>Quality that makes a real difference</p>
+          <h2>{langText.why_choose}</h2>
+          <p>{langText.why_body}</p>
         </div>
 
         <div className="tata-cards-grid">
           {/* CARD 1 – 10-Hour Protection */}
           <div className="tata-card">
             <div className="tata-card-icon clock-icon">🕐</div>
-            <h3>10-Hour Protection</h3>
-            <p>Slow‑burn technology designed to provide consistent overnight coverage.</p>
+            <h3>{langText.card1_title}</h3>
+            <p>{langText.card1_desc}</p>
           </div>
 
           {/* CARD 2 – Research-Based Formula */}
           <div className="tata-card">
             <div className="tata-card-icon flask-icon">🧪</div>
-            <h3>Research‑Based Formula</h3>
-            <p>
-              Effective against dengue and malaria‑carrying mosquitoes, as well as common household mosquitoes.
-            </p>
+            <h3>{langText.card2_title}</h3>
+            <p>{langText.card2_desc}</p>
           </div>
 
           {/* CARD 3 – Strict Quality Control */}
           <div className="tata-card">
             <div className="tata-card-icon quality-icon">✅</div>
-            <h3>Strict Quality Control</h3>
-            <p>Each batch is carefully tested. We never compromise on quality.</p>
+            <h3>{langText.card3_title}</h3>
+            <p>{langText.card3_desc}</p>
           </div>
 
           {/* CARD 4 – Safe When Used Properly */}
           <div className="tata-card">
             <div className="tata-card-icon safety-icon">🛡️</div>
-            <h3>Safe When Used Properly</h3>
-            <p>Made with approved ingredients and clear usage instructions on every pack.</p>
+            <h3>{langText.card4_title}</h3>
+            <p>{langText.card4_desc}</p>
           </div>
         </div>
       </div>
@@ -324,11 +390,7 @@ export default function Home({ lang = "en" }) {
         <div className="footer-grid">
           <div className="footer-col">
             <h2>🏢 {langText.company}</h2>
-            <p>
-              {currentLang === "bn"
-                ? "আমরা উচ্চ মানের কেমিক্যাল সরবরাহ করি বিশ্বব্যাপী"
-                : "We provide high quality chemical products worldwide"}
-            </p>
+            <p>{langText.footer_about}</p>
             <div className="social-icons">
               <span
                 onClick={() => window.open("https://facebook.com", "_blank")}
@@ -354,38 +416,40 @@ export default function Home({ lang = "en" }) {
           </div>
 
           <div className="footer-col">
-            <h3>🔗 Links</h3>
+            <h3>{langText.footer_links}</h3>
             <ul>
-              <li onClick={() => nav("/")}>Home</li>
-              <li onClick={() => nav("/products")}>Products</li>
-              <li onClick={() => nav("/services")}>Services</li>
-              <li onClick={() => nav("/contact")}>Contact</li>
+              <li onClick={() => nav("/")}>{langText.home}</li>
+              <li onClick={() => nav("/products")}>{langText.products}</li>
+              <li onClick={() => nav("/services")}>{langText.services}</li>
+              <li onClick={() => nav("/contact")}>{langText.contact}</li>
             </ul>
           </div>
 
           <div className="footer-col">
-            <h3>📞 Contact</h3>
-            <p>Email: info@chemical.com</p>
-            <p>Phone: +880123456789</p>
-            <p>Location: Bangladesh</p>
+            <h3>{langText.footer_contact}</h3>
+            <p>{langText.footer_email_label}: info@chemical.com</p>
+            <p>{langText.footer_phone_label}: +880123456789</p>
+            <p>{langText.footer_location_label}: Bangladesh</p>
             <button
               className="whatsapp-btn"
               onClick={() =>
                 window.open("https://wa.me/8801854242461", "_blank")
               }
             >
-              💬 Chat on WhatsApp
+              {langText.footer_whatsapp_button}
             </button>
           </div>
 
           <div className="footer-col">
-            <h3>📩 Newsletter</h3>
+            <h3>{langText.footer_newsletter_title}</h3>
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder={langText.footer_email_placeholder}
             />
-            <button onClick={subscribe}>Subscribe</button>
+            <button onClick={subscribe}>
+              {langText.footer_subscribe_button}
+            </button>
             <p className="live-time">
               🕒 {new Date().toLocaleTimeString()}
             </p>
@@ -399,7 +463,7 @@ export default function Home({ lang = "en" }) {
         />
 
         <div className="footer-bottom-advanced">
-          <p>© 2026 Chemical System | All Rights Reserved</p>
+          <p>{langText.footer_copyright}</p>
         </div>
       </footer>
     </div>
