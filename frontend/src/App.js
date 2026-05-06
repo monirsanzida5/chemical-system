@@ -23,13 +23,9 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
-import SignupPage from "./pages/Signup"; // ✅ FIX (external file)
-import LoginPage from "./pages/Login"; // ✅ FIX (external file)
-import DashboardPage from "./pages/Dashboard"; // ✅ FIX (external file)
+import SignupPage from "./pages/Signup"; 
 import AdminJobs from "./pages/AdminJobs";
 
-
-// 🌐 CONTEXT
 export const LanguageContext = createContext();
 
 // 🌐 TRANSLATION
@@ -120,7 +116,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
 
         {user && (
           <li>
-            <button className="logout-btn" onClick={logout}>
+            <button onClick={logout}>
               {text[lang]?.logout}
             </button>
           </li>
@@ -274,11 +270,8 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             
-            {/* ✅ FIX */}
             <Route path="/signup" element={<SignupPage setUser={setUser} />} />
-            
             <Route path="/adminjobs" element={<AdminJobs setUser={setUser} />} />
-
 
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
@@ -296,18 +289,6 @@ export default function App() {
           </Routes>
 
         </Router>
-
-        {chatOpen && (
-          <div className="chat-box">
-            {messages.map((m, i) => (
-              <div key={i}>{m.text}</div>
-            ))}
-            <input value={input} onChange={(e) => setInput(e.target.value)} />
-            <button onClick={sendMessage}>Send</button>
-          </div>
-        )}
-
-        <div className="chat-btn" onClick={() => setChatOpen(true)}>💬</div>
 
       </div>
     </LanguageContext.Provider>
