@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/signup.css";
 
-export default function Signup({ setUser }) {
+export default function Signup() {
   const nav = useNavigate();
 
   const signup = async () => {
@@ -15,7 +15,7 @@ export default function Signup({ setUser }) {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/signup", {
+    const res = await fetch("https://chemical-backend-vx21.onrender.com/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password })
@@ -27,7 +27,7 @@ export default function Signup({ setUser }) {
       alert("Signup Success ✅");
       nav("/login");
     } else {
-      alert(data.message);
+      alert(data.message || "Signup failed");
     }
   };
 
@@ -37,43 +37,12 @@ export default function Signup({ setUser }) {
       <div className="signup-box">
 
         <h2>📝 Signup</h2>
-        <p>Fill your details to create an account</p>
 
-        <div className="form-row">
-          <input
-            id="name"
-            placeholder="Name"
-            className="form-input"
-          />
-        </div>
+        <input id="name" placeholder="Name" />
+        <input id="email" placeholder="Email" />
+        <input id="password" placeholder="Password" />
 
-        <div className="form-row">
-          <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            className="form-input"
-          />
-        </div>
-
-        <div className="form-row">
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            className="form-input"
-            onKeyUp={(e) => e.key === "Enter" && signup()}
-          />
-        </div>
-
-        <div className="submit-row">
-          <button
-            className="btn-primary full-width"
-            onClick={signup}
-          >
-            Signup
-          </button>
-        </div>
+        <button onClick={signup}>Signup</button>
 
       </div>
 

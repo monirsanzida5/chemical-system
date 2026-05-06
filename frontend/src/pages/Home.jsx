@@ -52,8 +52,8 @@ const t = {
     footer_copyright: "© 2026 Chemical System | All Rights Reserved"
   },
   bn: {
-    welcome: "Chemical System এ স্বাগতম",
-    company: "Monir & Sanzida Chemicals Works",
+    welcome: "স্বাগতম",
+    company: "মনির ও সানজিদা কেমিক্যালস ওয়ার্কস",
     marquee: "উচ্চ মানের কেমিক্যাল, ২৪×৭ সাপোর্ট, দ্রুত ডেলিভারি।",
     explore: "প্রোডাক্ট ঘুরে দেখুন",
     contact: "যোগাযোগ",
@@ -97,7 +97,56 @@ const t = {
     footer_email_placeholder: "আপনার ইমেইল লিখুন",
     footer_subscribe_button: "সাবস্ক্রাইব",
     footer_copyright: "© ২০২৬ কেমিক্যাল সিস্টেম | সর্বস্বত্ব সংরক্ষিত"
-  }
+  },
+
+  jp: {
+    welcome: "いらっしゃいませ",
+    company: "モニール＆サンジダ化学工場",
+    marquee: "高品質な化学製品、24時間365日のサポート、迅速な配送。",
+    explore: "製品を調べる",
+    contact: "お問い合わせ",
+    shop: "Shop Now",
+    feature1: "Fast Delivery",
+    feature2: "Secure Transactions",
+    feature3: "24×7 Support",
+    feature4: "Global Shipping",
+    tata_headline: "Sleep Peacefully. Wake Refreshed.",
+    tata_subhead: "Up to 8 Hours of Continuous Protection",
+    tata_body: "One coil for the whole night. Dependable quality, made with care for your family.",
+    tata_8hours: "8 Hours",
+    tata_8desc: "All‑night coverage for worry‑free sleep",
+    tata_formula: "Advanced Formula",
+    tata_formuladesc: "Effective against common mosquitoes",
+    tata_safe: "Safe for Daily Use",
+    tata_safedesc: "When used as directed",
+    tata_quality: "Trusted Quality",
+    tata_qualitydesc: "Consistent performance in every pack",
+    why_choose: "Why Choose TATA",
+    why_body: "Quality that makes a real difference",
+    card1_title: "10-Hour Protection",
+    card1_desc: "Slow‑burn technology designed to provide consistent overnight coverage.",
+    card2_title: "Research‑Based Formula",
+    card2_desc: "Effective against dengue and malaria‑carrying mosquitoes, as well as common household mosquitoes.",
+    card3_title: "Strict Quality Control",
+    card3_desc: "Each batch is carefully tested. We never compromise on quality.",
+    card4_title: "Safe When Used Properly",
+    card4_desc: "Made with approved ingredients and clear usage instructions on every pack.",
+    footer_about: "We provide high quality chemical products worldwide",
+    footer_links: "🔗 Links",
+    home: "Home",
+    products: "Products",
+    services: "Services",
+    footer_contact: "📞 Contact",
+    footer_email_label: "Email",
+    footer_phone_label: "Phone",
+    footer_location_label: "Location",
+    footer_whatsapp_button: "💬 Chat on WhatsApp",
+    footer_newsletter_title: "📩 Newsletter",
+    footer_email_placeholder: "Enter your email",
+    footer_subscribe_button: "Subscribe",
+    footer_copyright: "© 2026 Chemical System | All Rights Reserved"
+  },
+  
 };
 
 export default function Home({ lang = "en" }) {
@@ -158,7 +207,8 @@ export default function Home({ lang = "en" }) {
           <div className="marquee">
             <span>🔥 {langText.marquee}</span>
           </div>
-          
+
+   
           <div className="banner-buttons">
             <button
               className="explore-btn"

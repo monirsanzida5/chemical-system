@@ -6,32 +6,46 @@ export default function Login({ setUser }) {
   const nav = useNavigate();
 
   const login = async () => {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    try {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-    if (!email || !password) {
-      alert("Email & Password required");
-      return;
-    }
+      if (!email || !password) {
+        alert("Email & Password required");
+        return;
+      }
 
-    const res = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    });
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    alert(JSON.stringify(data));
+      // ❌ debug alert remove করা হলো (production এ দরকার নাই)
+      // alert(JSON.stringify(data));
 
-    if (data.success) {
-      localStorage.setItem("token", data.token);
-      setUser({ email });
-      nav("/dashboard");
-    } else {
-      alert(data.message);
+      if (data.success) {
+        // ✅ token save
+        localStorage.setItem("token", data.token);
+
+        // ✅ user properly save (IMPORTANT FIX)
+        const userData = data.user || { email };
+        localStorage.setItem("user", JSON.stringify(userData));
+        setUser(userData);
+
+        alert("Login Success ✅");
+
+        nav("/dashboard");
+      } else {
+        alert(data.message || "Login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error ❌ (backend চালু আছে কিনা চেক কর)");
     }
   };
 

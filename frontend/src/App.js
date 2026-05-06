@@ -22,10 +22,17 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
+import Profile from "./pages/Profile";
+import SignupPage from "./pages/Signup"; // ✅ FIX (external file)
+import LoginPage from "./pages/Login"; // ✅ FIX (external file)
+import DashboardPage from "./pages/Dashboard"; // ✅ FIX (external file)
+import AdminJobs from "./pages/AdminJobs";
 
+
+// 🌐 CONTEXT
 export const LanguageContext = createContext();
 
-// 🌐 TRANSLATION (✅ UPDATED - JP + CN ADDED)
+// 🌐 TRANSLATION
 const text = {
   en: {
     home: "Home",
@@ -83,6 +90,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("user");
     nav("/");
   };
 
@@ -108,6 +116,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
         {!user && <li><Link to="/login">{text[lang]?.login}</Link></li>}
 
         {user && <li><Link to="/dashboard">{text[lang]?.dashboard}</Link></li>}
+        {user && <li><Link to="/profile">Profile</Link></li>}
 
         {user && (
           <li>
@@ -118,7 +127,6 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
         )}
       </ul>
 
-      {/* ✅ LANGUAGE SELECT FIX */}
       <select value={lang} onChange={(e) => setLang(e.target.value)}>
         <option value="en">EN</option>
         <option value="bn">BN</option>
@@ -129,42 +137,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
   );
 }
 
-// 🔐 SIGNUP (unchanged)
-function Signup() {
-  const nav = useNavigate();
-
-  const signup = async () => {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const res = await fetch("https://chemical-backend-vx21.onrender.com/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      alert("Signup Success");
-      nav("/login");
-    } else {
-      alert(data.message);
-    }
-  };
-
-  return (
-    <div className="form">
-      <input id="name" placeholder="Name" />
-      <input id="email" placeholder="Email" />
-      <input id="password" placeholder="Password" />
-      <button onClick={signup}>Signup</button>
-    </div>
-  );
-}
-
-// 🔐 LOGIN (unchanged)
+// 🔐 LOGIN
 function Login({ setUser }) {
   const nav = useNavigate();
 
@@ -182,6 +155,7 @@ function Login({ setUser }) {
 
     if (data.success) {
       setUser(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
       nav("/dashboard");
     } else {
       alert("Wrong Email or Password");
@@ -197,7 +171,7 @@ function Login({ setUser }) {
   );
 }
 
-// 📊 DASHBOARD (unchanged)
+// 📊 DASHBOARD
 function Dashboard({ user, setUser }) {
   const [edit, setEdit] = useState(false);
 
@@ -236,7 +210,7 @@ function Dashboard({ user, setUser }) {
   );
 }
 
-// 🚀 MAIN APP (unchanged)
+// 🚀 MAIN APP
 export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);
@@ -299,9 +273,16 @@ export default function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/signup" element={<Signup />} />
+            
+            {/* ✅ FIX */}
+            <Route path="/signup" element={<SignupPage setUser={setUser} />} />
+            
+            <Route path="/adminjobs" element={<AdminJobs setUser={setUser} />} />
+
+
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
+            <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 

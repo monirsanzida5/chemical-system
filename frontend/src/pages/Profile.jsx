@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/profile.css";
 
 export default function Profile({ user, setUser }) {
   const nav = useNavigate();
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: user?.name || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    address: user?.address || "",
+  });
+
+  const [avatar, setAvatar] = useState(user?.avatar || null);
+  const [editMode, setEditMode] = useState(false);
 
   if (!user) {
     return (
@@ -13,143 +24,188 @@ export default function Profile({ user, setUser }) {
     );
   }
 
-  // ধরো এখন userInfo আর profile তথ্য একই রকম (তোমার app কার্যকরী হলে সেটা বাকি)
-  const [formData, setFormData] = React.useState({
-    name: user.name,
-    email: user.email,
-    phone: user.phone || "",
-    address: user.address || "",
-  });
-
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSave = async () => {
-    // 👉 ফ্রন্টএন্ড demo only
-    // তুমি পরে এখানে API যোগ করবে: PUT /profile
-    alert("Profile updated (frontend only) 🚀");
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-    // তোমার app যদি স্থানীয় পরিবর্তন দেখাতে চাও
+    const reader = new FileReader();
+    reader.onload = () => {
+      setAvatar(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveAvatar = () => {
+    setAvatar(null);
+  };
+
+  const handleSave = () => {
+    alert("Profile updated (frontend only) ✅");
+
     if (setUser) {
-      setUser({ ...user, name: formData.name });
+      const updatedUser = {
+        ...user,
+        ...formData,
+        avatar,
+      };
+
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
     }
+    setEditMode(false);
+  };
+
+  const handleEditToggle = () => {
+    if (!editMode) setFormData({ ...user, ...user });
+    setEditMode(!editMode);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
     nav("/login");
   };
 
-  const fullName = user.name || "No name";
+  const fullName = formData.name || "User Name";
 
   return (
     <div className="profile-page">
-
       <header className="profile-header">
         <h1>👤 Profile</h1>
-        <p>
-          Manage your personal information and preferences
-        </p>
+        <p>Manage your personal information and preferences</p>
       </header>
 
       <section className="profile-card">
-        <div className="avatar">
-          {fullName.charAt(0).toUpperCase()}
+        <div className="card-avatar-section">
+          <div className="avatar-box">
+            {avatar ? (
+              <img src={avatar} alt="Profile" className="avatar-preview" />
+            ) : (
+              <div className="avatar-fallback">
+                {fullName.charAt(0).toUpperCase()}
+              </div>
+            )}
+          </div>
+
+          <div className="avatar-actions">
+            <label className="btn btn-outline btn-upload">
+              📷 Upload Photo
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleAvatarChange}
+              />
+            </label>
+
+            {avatar && (
+              <button
+                className="btn btn-danger btn-remove"
+                onClick={handleRemoveAvatar}
+              >
+                🗑 Remove Photo
+              </button>
+            )}
+          </div>
         </div>
 
-        <div className="user-info">
-          <h2>{fullName}</h2>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
-          <p>
-            <strong>Role:</strong> Customer
-          </p>
-        </div>
+        <div className="card-info-section">
+          <div className="user-info">
+            <h2>{fullName}</h2>
+            <p><strong>Email:</strong> {formData.email}</p>
+            <p><strong>Role:</strong> Customer</p>
+          </div>
 
-        <div className="profile-actions">
-          <button
-            className="btn btn-outline"
-            onClick={() => nav("/orders")}
-          >
-            🧾 Orders
-          </button>
+          <div className="card-buttons">
+            <button
+              className="btn btn-outline"
+              onClick={() => nav("/orders")}
+            >
+              🧾 Orders
+            </button>
 
-          <button
-            className="btn btn-danger"
-            onClick={handleLogout}
-          >
-            🚪 Logout
-          </button>
+            <button
+              className="btn btn-danger"
+              onClick={handleLogout}
+            >
+              🚪 Logout
+            </button>
+          </div>
         </div>
       </section>
 
       <section className="profile-form">
-        <h2>✏️ Edit Profile</h2>
+        <div className="form-header">
+          <h2>✏️ Edit Profile</h2>
+          {!editMode && (
+            <button className="btn btn-outline" onClick={handleEditToggle}>
+              ✏️ Edit
+            </button>
+          )}
+          {editMode && (
+            <button className="btn btn-primary" onClick={handleEditToggle}>
+              ❌ Cancel
+            </button>
+          )}
+        </div>
 
         <div className="form-row">
+          <label>Full Name *</label>
           <input
             type="text"
             name="name"
-            placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
-            required
+            readOnly={!editMode}
           />
         </div>
 
         <div className="form-row">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            disabled // Usually email cannot be changed without backend
-          />
+          <label>Email *</label>
+          <input type="email" value={formData.email} disabled readOnly />
         </div>
 
         <div className="form-row">
+          <label>Phone</label>
           <input
-            type="text"
             name="phone"
-            placeholder="Phone Number"
             value={formData.phone}
             onChange={handleChange}
+            readOnly={!editMode}
           />
         </div>
 
         <div className="form-row">
+          <label>Address</label>
           <textarea
             name="address"
-            placeholder="Address"
             value={formData.address}
             onChange={handleChange}
-          ></textarea>
+            readOnly={!editMode}
+          />
         </div>
 
-        <button
-          className="btn btn-primary"
-          onClick={handleSave}
-        >
-          💾 Save Changes
-        </button>
+        {editMode && (
+          <button className="btn btn-primary" onClick={handleSave}>
+            💾 Save Changes
+          </button>
+        )}
       </section>
 
       <section className="profile-stats">
         <h2>📊 Account Info</h2>
-
-        <div className="stats-row">
-          <p>
-            <strong>Orders Placed:</strong> 0
-          </p>
-          <p>
-            <strong>Wishlist Items:</strong> 0
-          </p>
-        </div>
+        <p><strong>Orders:</strong> 0</p>
+        <p><strong>Wishlist Items:</strong> 0</p>
       </section>
 
+      <section className="profile-note">
+        <p className="note">🔒 Email cannot be changed here.</p>
+      </section>
     </div>
   );
 }
