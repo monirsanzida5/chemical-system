@@ -23,9 +23,12 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
-import SignupPage from "./pages/Signup"; 
+import SignupPage from "./pages/Signup";
+import LoginPage from "./pages/Login";
+import DashboardPage from "./pages/Dashboard";
 import AdminJobs from "./pages/AdminJobs";
 
+// 🌐 CONTEXT
 export const LanguageContext = createContext();
 
 // 🌐 TRANSLATION
@@ -116,7 +119,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
 
         {user && (
           <li>
-            <button onClick={logout}>
+            <button className="logout-btn" onClick={logout}>
               {text[lang]?.logout}
             </button>
           </li>
@@ -133,7 +136,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
   );
 }
 
-// 🔐 LOGIN
+// 🔐 LOGIN (EXTERNAL PAGE)
 function Login({ setUser }) {
   const nav = useNavigate();
 
@@ -190,13 +193,17 @@ function Dashboard({ user, setUser }) {
     <div className="profile-container">
       <h1>👤 My Profile</h1>
 
-      <input disabled={!edit} value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })} />
+      <input disabled={!edit}
+        value={form.name}
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+      />
 
       <input disabled value={form.email} />
 
-      <input disabled={!edit} value={form.address}
-        onChange={(e) => setForm({ ...form, address: e.target.value })} />
+      <input disabled={!edit}
+        value={form.address}
+        onChange={(e) => setForm({ ...form, address: e.target.value })}
+      />
 
       {!edit
         ? <button onClick={() => setEdit(true)}>Edit</button>
@@ -211,7 +218,6 @@ export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
-
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hello 👋 How can I help you?" }
   ]);
@@ -269,13 +275,13 @@ export default function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
-            
-            <Route path="/signup" element={<SignupPage setUser={setUser} />} />
-            <Route path="/adminjobs" element={<AdminJobs setUser={setUser} />} />
 
+            <Route path="/signup" element={<SignupPage setUser={setUser} />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
+
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
             <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
+
             <Route path="/chat" element={<Chat />} />
             <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
@@ -286,9 +292,22 @@ export default function App() {
             } />
 
             <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/adminjobs" element={<AdminJobs />} />
           </Routes>
 
         </Router>
+
+        {chatOpen && (
+          <div className="chat-box">
+            {messages.map((m, i) => (
+              <div key={i}>{m.text}</div>
+            ))}
+            <input value={input} onChange={(e) => setInput(e.target.value)} />
+            <button onClick={sendMessage}>Send</button>
+          </div>
+        )}
+
+        <div className="chat-btn" onClick={() => setChatOpen(true)}>💬</div>
 
       </div>
     </LanguageContext.Provider>
