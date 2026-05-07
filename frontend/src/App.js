@@ -23,7 +23,6 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
-import Signuppages from "./pages/Signup";
 
 export const LanguageContext = createContext();
 
@@ -303,7 +302,7 @@ export default function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/signup" element={<Signup setUser={setUser} />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
             <Route path="/profile" element={<Profile user={user} setUser={setUser} />} /> {/* ✅ FIX */}
