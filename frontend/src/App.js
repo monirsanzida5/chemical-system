@@ -23,6 +23,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
 
 export const LanguageContext = createContext();
 
@@ -131,40 +132,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
   );
 }
 
-// 🔐 SIGNUP
-function Signup() {
-  const nav = useNavigate();
 
-  const signup = async () => {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const res = await fetch("https://chemical-backend-vx21.onrender.com/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      alert("Signup Success");
-      nav("/login");
-    } else {
-      alert(data.message);
-    }
-  };
-
-  return (
-    <div className="form">
-      <input id="name" placeholder="Name" />
-      <input id="email" placeholder="Email" />
-      <input id="password" placeholder="Password" />
-      <button onClick={signup}>Signup</button>
-    </div>
-  );
-}
 
 // 🔐 LOGIN
 function Login({ setUser }) {
