@@ -1,88 +1,352 @@
-/* SIGNUP PAGE */
+/* SIGNUP PAGE – LEFT TIPS + RIGHT HOVER CARD */
 
 /* PAGE */
 .signup-page {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
   background: #f4f6f9;
   padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
-/* SIGNUP BOX */
-.signup-box {
-  background: white;
-  padding: 40px;
+/* LEFT INFO PANEL – Account Signup Tips */
+.signup-info {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 440px;
+  background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 400px;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signup-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.signup-info h2 {
+  margin-bottom: 12px;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.info-list {
+  margin: 12px 0;
+  padding-left: 20px;
+  color: #4b5563;
+  font-size: 15px;
+}
+
+.info-list li {
+  margin-bottom: 8px;
+}
+
+.tip-bottom {
+  margin-top: 16px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+/* RIGHT: SIGNUP CARD (মাঝারি hover card) */
+.signup-card {
+  flex: 1;
+  max-width: 440px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 45px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.signup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.16);
+}
+
+.signup-card h2 {
+  margin-bottom: 10px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.signup-card p {
+  color: #4b5563;
+  margin-bottom: 24px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* FORM ROWS */
+.form-row {
+  margin-bottom: 16px;
   width: 100%;
 }
 
-.signup-box h2 {
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.signup-box p {
-  color: #666;
-  margin-bottom: 25px;
-}
-
-/* FORM ROW */
-.form-row {
-  margin-bottom: 15px;
-}
-
-/* INPUT */
+/* INPUT STYLES */
 .form-input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 13px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
   outline: none;
   font-size: 16px;
-  transition: 0.2s;
+  background: #fff;
+  color: #111827;
+  transition: all 0.2s ease;
 }
 
 .form-input:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* PASSWORD INPUT WRAP (show/hide button) */
+.password-input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.password-input {
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  outline: none;
+  color: #4b5563;
+}
+
+.password-toggle:hover {
+  background: #f1f5f9;
+  border-color: #2563eb;
+  color: #111827;
 }
 
 /* SUBMIT BUTTON */
-.submit-row {
-  margin-top: 15px;
+.btn-submit {
+  background: #00b894;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 12px 0;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #019875;
+  box-shadow: 0 5px 15px rgba(1, 152, 117, 0.2);
 }
 
 .full-width {
   width: 100%;
 }
 
-/* DARK MODE SUPPORT (optional) */
+/* EXTRA LINKS (Login, Back to Home) */
+.extra-links {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #4b5563;
+}
 
-/* যদি dark mode থাকে (তোমার admin.css এ .dark) */
+.extra-links .link-btn {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.extra-links .link-btn:hover {
+  color: #1d4ed8;
+}
+
+/* DARK MODE SUPPORT */
 .signup-page.dark {
   background: #0f172a;
 }
 
-.signup-box.dark {
+/* DARK – LEFT INFO BOX */
+.signup-info.dark {
   background: #1e293b;
-  color: white;
-  border: 1px solid #334155;
+  border-color: #334155;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.25);
 }
 
-.signup-box.dark h2,
-.signup-box.dark p {
-  color: white;
+.signup-info.dark h2 {
+  color: #f1f5f9;
 }
 
-.signup-box.dark .form-input {
+.signup-info.dark .info-list {
+  color: #cbd5e1;
+}
+
+.signup-info.dark .tip-bottom {
+  color: #cbd5e1;
+}
+
+/* DARK – SIGNUP CARD */
+.signup-card.dark {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.25);
+}
+
+.signup-card.dark:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.3);
+}
+
+.signup-card.dark h2,
+.signup-card.dark p {
+  color: #f1f5f9;
+}
+
+.signup-card.dark .form-input {
   background: #111827;
-  color: white;
-  border: 1px solid #334155;
+  color: #e2e8f0;
+  border-color: #334155;
 }
 
+.signup-card.dark .password-input {
+  background: #111827;
+  color: #e2e8f0;
+}
+
+.signup-card.dark .password-toggle {
+  border-color: #4b5563;
+  color: #cbd5e1;
+}
+
+.signup-card.dark .password-toggle:hover {
+  background: #2d3748;
+  border-color: #60a5fa;
+  color: #f1f5f9;
+}
+
+.signup-card.dark .btn-submit {
+  background: #0ea5e9;
+}
+
+.signup-card.dark .btn-submit:hover {
+  background: #0284c7;
+  box-shadow: 0 5px 15px rgba(2, 132, 199, 0.25);
+}
+
+.signup-card.dark .extra-links .link-btn {
+  color: #60a5fa;
+}
+
+.signup-card.dark .extra-links .link-btn:hover {
+  color: #3b82f6;
+}
+
+/* RESPONSIVE (মোবাইলে কলাম হিসেবে) */
+@media (max-width: 768px) {
+  .signup-page {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .signup-info,
+  .signup-card {
+    max-width: 100%;
+  }
+
+  .signup-info {
+    margin-bottom: 16px;
+    padding: 28px 20px;
+  }
+
+  .signup-info:hover {
+    transform: none;
+  }
+
+  .signup-info h2 {
+    font-size: 20px;
+  }
+
+  .signup-info .info-list {
+    font-size: 14px;
+  }
+
+  .signup-info .tip-bottom {
+    font-size: 13px;
+  }
+
+  .signup-card {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 32px 24px;
+    border-radius: 14px;
+  }
+
+  .signup-card:hover {
+    transform: none;
+  }
+
+  .signup-card h2 {
+    font-size: 20px;
+  }
+
+  .signup-card p {
+    font-size: 13px;
+  }
+
+  .form-row {
+    margin-bottom: 14px;
+  }
+
+  .form-input,
+  .btn-submit {
+    font-size: 15px;
+  }
+
+  .password-input {
+    padding-right: 46px;
+  }
+
+  .password-toggle {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .extra-links {
+    font-size: 13px;
+  }
+
+  .extra-links .link-btn {
+    font-size: 13px;
+  }
+}
 /* এটা শেষ — এটা `signup.css` (Signup.jsx এর জন্য) */

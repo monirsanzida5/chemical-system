@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
 
 export default function Login({ setUser }) {
   const nav = useNavigate();
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
 
   const login = () => {
     const email = document.getElementById("email").value;
@@ -15,7 +21,7 @@ export default function Login({ setUser }) {
     }
 
     // এখন শুধু frontend demo:
-    // ভবিষ্যতে এখানে backend API যোগ করবে:
+    // ভবিষ্যতে backend API যোগ করবে:
     // fetch("https://chemical-backend-vx21.onrender.com/login", { ... })
 
     alert("Login success (demo only) ✅");
@@ -32,6 +38,12 @@ export default function Login({ setUser }) {
     nav("/dashboard"); // ভবিষ্যতে backend চালু হলে redirect ঠিক থাকবে
   };
 
+  const handleForgotPassword = () => {
+    alert(
+      "Password reset link will be sent to your email (backend not implemented yet)."
+    );
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       login();
@@ -44,7 +56,31 @@ export default function Login({ setUser }) {
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <div className="login-box">
+      {/* LEFT: ACCOUNT LOGIN TIPS */}
+      <div className="login-info">
+        <h2>🔐 Account Login Tips</h2>
+
+        <ul className="info-list">
+          <li>Use the same email and password you used to sign up.</li>
+          <li>
+            Use a strong password combining uppercase, lowercase,
+            numbers, and symbols.
+          </li>
+          <li>Never share your password with anyone.</li>
+          <li>
+            Enable 2‑step verification (Google Authenticator, OTP)
+            where possible.
+          </li>
+          <li>Use a trusted, updated browser for better security.</li>
+        </ul> {/* এই </ul> হারানো গিয়েছিল – এটা লাগে এখানে */}
+
+        <div className="tip-bottom">
+          <p>If you forget your password, use the “Forgot Password” option to reset it.</p>
+        </div>
+      </div>
+
+      {/* RIGHT: LOGIN CARD (মাঝারি hover card) */}
+      <div className="login-card">
         <h2>🔐 Login</h2>
         <p>Sign in to your account to continue.</p>
 
@@ -58,14 +94,33 @@ export default function Login({ setUser }) {
           />
         </div>
 
-        <div className="form-row">
+        <div className="form-row password-input-wrap">
           <input
             id="password"
-            className="form-input"
-            type="password"
+            className="form-input password-input"
+            type={passwordVisible ? "text" : "password"}
             placeholder="Password"
             required
           />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={togglePasswordVisibility}
+            aria-label={
+              passwordVisible ? "Hide password" : "Show password"
+            }
+          >
+            {passwordVisible ? "🙈" : "👁️"}
+          </button>
+        </div>
+
+        <div className="password-row">
+          <button
+            className="link-btn small"
+            onClick={handleForgotPassword}
+          >
+            Forgot Password?
+          </button>
         </div>
 
         <div className="submit-row">
