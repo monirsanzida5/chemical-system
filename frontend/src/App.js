@@ -5,7 +5,7 @@ import {
   Route,
   Link,
   useNavigate,
-  Navigate
+ // Navigate
 } from "react-router-dom";
 
 import "./App.css";
@@ -24,6 +24,9 @@ import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import AdminJobs from "./pages/AdminJobs";
 
 export const LanguageContext = createContext();
 
@@ -134,79 +137,6 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
 
 
 
-// 🔐 LOGIN
-function Login({ setUser }) {
-  const nav = useNavigate();
-
-  const login = async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const res = await fetch("https://chemical-backend-vx21.onrender.com/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      setUser(data.user);
-      localStorage.setItem("user", JSON.stringify(data.user)); // ✅ FIX
-      nav("/dashboard");
-    } else {
-      alert("Wrong Email or Password");
-    }
-  };
-
-  return (
-    <div className="form">
-      <input id="email" placeholder="Email" />
-      <input id="password" placeholder="Password" />
-      <button onClick={login}>Login</button>
-    </div>
-  );
-}
-
-// 📊 DASHBOARD
-function Dashboard({ user, setUser }) {
-  const [edit, setEdit] = useState(false);
-
-  const [form, setForm] = useState({
-    name: user?.name || "",
-    email: user?.email || "",
-    address: user?.address || ""
-  });
-
-  if (!user) return <Navigate to="/login" />;
-
-  const saveProfile = () => {
-    setUser(form);
-    localStorage.setItem("user", JSON.stringify(form));
-    setEdit(false);
-    alert("Profile Updated ✅");
-  };
-
-  return (
-    <div className="profile-container">
-      <h1>👤 My Profile</h1>
-
-      <input disabled={!edit} value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })} />
-
-      <input disabled value={form.email} />
-
-      <input disabled={!edit} value={form.address}
-        onChange={(e) => setForm({ ...form, address: e.target.value })} />
-
-      {!edit
-        ? <button onClick={() => setEdit(true)}>Edit</button>
-        : <button onClick={saveProfile}>Save</button>
-      }
-    </div>
-  );
-}
-
 // 🚀 MAIN APP
 export default function App() {
 
@@ -272,6 +202,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route path="/adminjobs" element={<AdminJobs setUser={setUser} />} />
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
             <Route path="/profile" element={<Profile user={user} setUser={setUser} />} /> {/* ✅ FIX */}
             <Route path="/chat" element={<Chat />} />
