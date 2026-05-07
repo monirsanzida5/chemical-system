@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/login.css";
 
 export default function Login({ setUser }) {
   const nav = useNavigate();
