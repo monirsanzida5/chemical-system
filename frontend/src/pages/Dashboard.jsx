@@ -1,100 +1,88 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // চাইলে লগআউটে ব্যবহার হবে
+import React, { useState } from "react";
 import "../css/dashboard.css";
 
-export default function Dashboard({ user }) {
-  const nav = useNavigate();
+export default function Dashboard({ user, setUser }) {
+  const [edit, setEdit] = useState(false);
+
+  const [form, setForm] = useState({
+    name: user?.name || "",
+    email: user?.email || "",
+    address: user?.address || ""
+  });
 
   if (!user) {
     return (
-      <div className="center-dashboard">
+      <div className="dashboard-placeholder">
         <h2>Please Login First</h2>
       </div>
     );
   }
 
-  // PREPARE FULL NAME
-  const fullName = user.name || "No name";
+  const saveProfile = () => {
+    setUser(form);
+    localStorage.setItem("user", JSON.stringify(form));
+    setEdit(false);
+    alert("Profile updated ✅");
+  };
 
   return (
-    <div className="dashboard-page">
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>👤 My Profile</h1>
+        <p>Manage your account information here</p>
+      </div>
 
-      <header className="dashboard-header">
-        <h1>🏠 Welcome to Dashboard</h1>
-        <p>Manage your account and orders easily</p>
-      </header>
-
-      <section className="user-profile-card">
-        <div className="avatar">
-          {fullName.charAt(0).toUpperCase()}
+      <div className="dashboard-card">
+        <div className="user-info">
+          <label>Name</label>
+          <input
+            disabled={!edit}
+            value={form.name}
+            onChange={(e) =>
+              setForm({ ...form, name: e.target.value })
+            }
+          />
         </div>
 
         <div className="user-info">
-          <h2>{fullName}</h2>
-          <p className="text-muted">
-            <strong>Email: {user.email}</strong>
-          </p>
+          <label>Email</label>
+          <input disabled value={form.email} />
         </div>
 
-        <div className="user-actions">
-          <button
-            className="btn btn-primary"
-            onClick={() => nav("/profile")}
-          >
-            👤 Profile
-          </button>
-
-          <button
-            className="btn btn-outline"
-            onClick={() => nav("/orders")}
-          >
-            🧾 Orders
-          </button>
-
-          <button
-            className="btn btn-danger"
-            onClick={() => {
-              // 👉 তোমার অ্যাপে ধরে নাও localStorage থেকে token remove
-              localStorage.removeItem("token");
-              nav("/login");
-            }}
-          >
-            🚪 Logout
-          </button>
-        </div>
-      </section>
-
-      {/* QUICK STATS / INFO CARD */}
-      <section className="quick-info-cards">
-        <div className="info-card">
-          <h3>🛒 Orders</h3>
-          <p>You have 0 active orders</p>
+        <div className="user-info">
+          <label>Address</label>
+          <input
+            disabled={!edit}
+            value={form.address}
+            onChange={(e) =>
+              setForm({ ...form, address: e.target.value })
+            }
+          />
         </div>
 
-        <div className="info-card">
-          <h3>💰 Wallet / Balance</h3>
-          <p>Balance: $0.00</p>
+        <div className="dashboard-actions">
+          {!edit ? (
+            <button
+              className="btn btn-outline"
+              onClick={() => setEdit(true)}
+            >
+              ✏️ Edit
+            </button>
+          ) : (
+            <button
+              className="btn btn-primary"
+              onClick={saveProfile}
+            >
+              💾 Save
+            </button>
+          )}
         </div>
+      </div>
 
-        <div className="info-card">
-          <h3>📩 Messages</h3>
-          <p>0 unread messages</p>
-        </div>
-      </section>
-
-      {/* CTA FOR PRODUCT PAGES */}
-      <section className="dashboard-cta">
-        <p>
-          Want to explore our products? Go to{" "}
-          <button
-            className="btn btn-link"
-            onClick={() => nav("/products")}
-          >
-            Products Page
-          </button>
-        </p>
-      </section>
-
+      <div className="dashboard-stats">
+        <p><strong>Orders:</strong> 0</p>
+        <p><strong>Wishlist Items:</strong> 0</p>
+      </div>
     </div>
   );
 }
