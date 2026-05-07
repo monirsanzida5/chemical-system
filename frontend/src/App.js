@@ -23,8 +23,6 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
-import SignupPage from "./pages/Signup"; 
-import AdminJobs from "./pages/AdminJobs";
 
 export const LanguageContext = createContext();
 
@@ -86,7 +84,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user");
+    localStorage.removeItem("user"); // ✅ FIX
     nav("/");
   };
 
@@ -112,11 +110,11 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
         {!user && <li><Link to="/login">{text[lang]?.login}</Link></li>}
 
         {user && <li><Link to="/dashboard">{text[lang]?.dashboard}</Link></li>}
-        {user && <li><Link to="/profile">Profile</Link></li>}
+        {user && <li><Link to="/profile">Profile</Link></li>} {/* ✅ FIX */}
 
         {user && (
           <li>
-            <button onClick={logout}>
+            <button className="logout-btn" onClick={logout}>
               {text[lang]?.logout}
             </button>
           </li>
@@ -130,6 +128,41 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
         <option value="cn">CN</option>
       </select>
     </nav>
+  );
+}
+
+// 🔐 SIGNUP
+function Signup() {
+  const nav = useNavigate();
+
+  const signup = async () => {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const res = await fetch("https://chemical-backend-vx21.onrender.com/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Signup Success");
+      nav("/login");
+    } else {
+      alert(data.message);
+    }
+  };
+
+  return (
+    <div className="form">
+      <input id="name" placeholder="Name" />
+      <input id="email" placeholder="Email" />
+      <input id="password" placeholder="Password" />
+      <button onClick={signup}>Signup</button>
+    </div>
   );
 }
 
@@ -151,7 +184,7 @@ function Login({ setUser }) {
 
     if (data.success) {
       setUser(data.user);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("user", JSON.stringify(data.user)); // ✅ FIX
       nav("/dashboard");
     } else {
       alert("Wrong Email or Password");
@@ -269,13 +302,10 @@ export default function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
-            
-            <Route path="/signup" element={<SignupPage setUser={setUser} />} />
-            <Route path="/adminjobs" element={<AdminJobs setUser={setUser} />} />
-
+            <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
-            <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
+            <Route path="/profile" element={<Profile user={user} setUser={setUser} />} /> {/* ✅ FIX */}
             <Route path="/chat" element={<Chat />} />
             <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
@@ -289,6 +319,18 @@ export default function App() {
           </Routes>
 
         </Router>
+
+        {chatOpen && (
+          <div className="chat-box">
+            {messages.map((m, i) => (
+              <div key={i}>{m.text}</div>
+            ))}
+            <input value={input} onChange={(e) => setInput(e.target.value)} />
+            <button onClick={sendMessage}>Send</button>
+          </div>
+        )}
+
+        <div className="chat-btn" onClick={() => setChatOpen(true)}>💬</div>
 
       </div>
     </LanguageContext.Provider>
