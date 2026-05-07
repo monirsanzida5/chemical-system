@@ -23,7 +23,12 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
+import SignupPage from "./pages/Signup";
+import LoginPage from "./pages/Login";
+import DashboardPage from "./pages/Dashboard";
+import AdminJobs from "./pages/AdminJobs";
 
+// 🌐 CONTEXT
 export const LanguageContext = createContext();
 
 // 🌐 TRANSLATION
@@ -84,7 +89,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user"); // ✅ FIX
+    localStorage.removeItem("user");
     nav("/");
   };
 
@@ -110,7 +115,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
         {!user && <li><Link to="/login">{text[lang]?.login}</Link></li>}
 
         {user && <li><Link to="/dashboard">{text[lang]?.dashboard}</Link></li>}
-        {user && <li><Link to="/profile">Profile</Link></li>} {/* ✅ FIX */}
+        {user && <li><Link to="/profile">Profile</Link></li>}
 
         {user && (
           <li>
@@ -131,42 +136,7 @@ function Navbar({ lang, setLang, user, setUser, cart }) {
   );
 }
 
-// 🔐 SIGNUP
-function Signup() {
-  const nav = useNavigate();
-
-  const signup = async () => {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const res = await fetch("https://chemical-backend-vx21.onrender.com/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      alert("Signup Success");
-      nav("/login");
-    } else {
-      alert(data.message);
-    }
-  };
-
-  return (
-    <div className="form">
-      <input id="name" placeholder="Name" />
-      <input id="email" placeholder="Email" />
-      <input id="password" placeholder="Password" />
-      <button onClick={signup}>Signup</button>
-    </div>
-  );
-}
-
-// 🔐 LOGIN
+// 🔐 LOGIN (EXTERNAL PAGE)
 function Login({ setUser }) {
   const nav = useNavigate();
 
@@ -184,7 +154,7 @@ function Login({ setUser }) {
 
     if (data.success) {
       setUser(data.user);
-      localStorage.setItem("user", JSON.stringify(data.user)); // ✅ FIX
+      localStorage.setItem("user", JSON.stringify(data.user));
       nav("/dashboard");
     } else {
       alert("Wrong Email or Password");
@@ -223,13 +193,17 @@ function Dashboard({ user, setUser }) {
     <div className="profile-container">
       <h1>👤 My Profile</h1>
 
-      <input disabled={!edit} value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })} />
+      <input disabled={!edit}
+        value={form.name}
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
+      />
 
       <input disabled value={form.email} />
 
-      <input disabled={!edit} value={form.address}
-        onChange={(e) => setForm({ ...form, address: e.target.value })} />
+      <input disabled={!edit}
+        value={form.address}
+        onChange={(e) => setForm({ ...form, address: e.target.value })}
+      />
 
       {!edit
         ? <button onClick={() => setEdit(true)}>Edit</button>
@@ -244,7 +218,6 @@ export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
-
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hello 👋 How can I help you?" }
   ]);
@@ -302,10 +275,13 @@ export default function App() {
             <Route path="/career" element={<Career />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/signup" element={<Signup />} />
+
+            <Route path="/signup" element={<SignupPage setUser={setUser} />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
+
             <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser} />} />
-            <Route path="/profile" element={<Profile user={user} setUser={setUser} />} /> {/* ✅ FIX */}
+            <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
+
             <Route path="/chat" element={<Chat />} />
             <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
@@ -316,6 +292,7 @@ export default function App() {
             } />
 
             <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/adminjobs" element={<AdminJobs />} />
           </Routes>
 
         </Router>
