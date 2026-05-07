@@ -8,81 +8,164 @@
   justify-content: center;
   background: #f4f6f9;
   padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 /* LOGIN BOX */
 .login-box {
   background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 45px 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   text-align: center;
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease;
+}
+
+.login-box:hover {
+  transform: translateY(-2px);
 }
 
 .login-box h2 {
-  margin-bottom: 10px;
-  color: #222;
+  margin-bottom: 8px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .login-box p {
-  color: #666;
-  margin-bottom: 25px;
+  color: #4b5563;
+  margin-bottom: 24px;
+  font-size: 14px;
+  opacity: 0.9;
 }
 
 /* INPUT ROW */
 .form-row {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 /* INPUT STYLES */
-.login-page .form-input {
+.form-input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 13px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
   outline: none;
   font-size: 16px;
-  transition: 0.2s;
+  background: #fff;
+  color: #111827;
+  transition: all 0.2s ease;
 }
 
-.login-page .form-input:focus {
+.form-input:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 /* SUBMIT BUTTON */
-.submit-row {
-  margin-top: 15px;
+.btn-submit {
+  background: #00b894;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 12px 0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #019875;
+  box-shadow: 0 5px 15px rgba(1, 152, 117, 0.2);
 }
 
 .full-width {
   width: 100%;
 }
 
-/* DARK MODE SUPPORT (optional) */
+/* EXTRA LINKS */
+.extra-links {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #4b5563;
+}
 
-/* ধরে নাও তোমার admin.css এ .dark থাকে */
+.extra-links .link-btn {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.extra-links .link-btn:hover {
+  color: #1d4ed8;
+}
+
+/* DARK MODE SUPPORT */
 .login-page.dark {
   background: #0f172a;
 }
 
 .login-page .login-box.dark {
   background: #1e293b;
-  color: white;
+  color: #e2e8f0;
   border: 1px solid #334155;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.25);
 }
 
 .login-page .login-box.dark h2,
 .login-page .login-box.dark p {
-  color: white;
+  color: #f1f5f9;
 }
 
 .login-page .login-box.dark .form-input {
   background: #111827;
-  color: white;
-  border: 1px solid #334155;
+  color: #e2e8f0;
+  border-color: #334155;
 }
 
+.login-page .login-box.dark .btn-submit {
+  background: #0ea5e9;
+}
+
+.login-page .login-box.dark .btn-submit:hover {
+  background: #0284c7;
+  box-shadow: 0 5px 15px rgba(2, 132, 199, 0.25);
+}
+
+.login-page .login-box.dark .extra-links .link-btn {
+  color: #60a5fa;
+}
+
+.login-page .login-box.dark .extra-links .link-btn:hover {
+  color: #3b82f6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 32px 24px;
+    border-radius: 12px;
+  }
+
+  .login-box h2 {
+    font-size: 20px;
+  }
+
+  .login-box p {
+    font-size: 13px;
+  }
+
+  .form-input {
+    font-size: 15px;
+  }
+}
 /* এটা শেষ — এটা `login.css` (Login.jsx এর জন্য) */
